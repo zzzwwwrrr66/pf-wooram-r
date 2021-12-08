@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/pf-wooram-r/static/css/main.84f99986.chunk.css",
+    "main.js": "/pf-wooram-r/static/js/main.98eba1d6.chunk.js",
+    "main.js.map": "/pf-wooram-r/static/js/main.98eba1d6.chunk.js.map",
+    "runtime-main.js": "/pf-wooram-r/static/js/runtime-main.7aa1799f.js",
+    "runtime-main.js.map": "/pf-wooram-r/static/js/runtime-main.7aa1799f.js.map",
+    "static/js/2.f586c52d.chunk.js": "/pf-wooram-r/static/js/2.f586c52d.chunk.js",
+    "static/js/2.f586c52d.chunk.js.map": "/pf-wooram-r/static/js/2.f586c52d.chunk.js.map",
+    "index.html": "/pf-wooram-r/index.html",
+    "static/css/main.84f99986.chunk.css.map": "/pf-wooram-r/static/css/main.84f99986.chunk.css.map",
+    "static/js/2.f586c52d.chunk.js.LICENSE.txt": "/pf-wooram-r/static/js/2.f586c52d.chunk.js.LICENSE.txt",
+    "static/media/wooram_logo.0a2ca778.png": "/pf-wooram-r/static/media/wooram_logo.0a2ca778.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7aa1799f.js",
+    "static/js/2.f586c52d.chunk.js",
+    "static/css/main.84f99986.chunk.css",
+    "static/js/main.98eba1d6.chunk.js"
+  ]
+}
