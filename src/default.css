@@ -36,3 +36,7 @@ button[disabled],
 input[disabled] {
 	cursor: default;
 }
+
+input {
+  font-size: 16px;
+}
