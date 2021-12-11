@@ -1,0 +1,69 @@
+html,
+body {
+	cursor: default;
+}
+a,
+label,
+button, 
+input[type="radio"], 
+input[type="submit"], 
+input[type="checkbox"] {
+	cursor: pointer;
+}
+
+#mediaFile {
+  position: absolute;
+  top: -1000px;
+}
+#profile {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  /* top: -80px; */
+  margin-bottom: 15px;
+  cursor: pointer;
+  background: #f4f4f4;
+  /* display: table; */
+  background-size: 100% 100%;
+  background-position: center center;
+  box-shadow: 0 5px 8px rgba(black, 0.35);
+}
+#profile label {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 30px;
+  color: grey;
+  opacity: 1;
+}
+#profile.dragging {
+  background-image: none!important;
+}
+#profile.dragging .dashes {
+  animation-duration: 10s;
+      animation-name: spin;
+      animation-iteration-count:infinite;
+      animation-timing-function: linear;
+      opacity: 1!important;
+}
+#profile.dragging label {
+  opacity: 0.5!important;
+}
+#profile .dashes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    /* border: 4px dashed #ddd; */
+    opacity: 1;
+}
+
+#profile.hasImage .dashes,#profile.hasImage label {
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}

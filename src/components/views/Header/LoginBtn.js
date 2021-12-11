@@ -38,9 +38,11 @@ const LoginBtn = ({state}) => {
       <Box sx={{ flexGrow: 0 }}>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           {
+            state.userInit ?
             state.userInfo && state.userInfo.userImg 
-            ? <Avatar alt="Remy Sharp" src={state.userInfo.userImg} />
+            ? <Avatar alt="Remy Sharp" src={state.userInfo.userImg} sx={{objectFit:'initial'}}/>
             :<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            : <CircularProgress />
           }
         </IconButton>
         <Menu

@@ -14,7 +14,7 @@ const pfWooramRstore = createSlice({
     actionIsLogin: (state, action) => { state.isLogin = action.payload },
     actionUserInfo: (state, action) => { 
       const data = {
-        ...action.payload
+        ...state.userInfo, ...action.payload
       }
       if(action.payload) {
         state.userInfo = data

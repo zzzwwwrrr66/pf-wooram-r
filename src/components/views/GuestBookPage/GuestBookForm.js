@@ -2,11 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { connect } from 'react-redux';
 
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import {Container, Box, TextField, Stack, Button} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
 import { dbService } from '../../../firebase';
@@ -14,6 +10,8 @@ import { getDocs, collection, addDoc, serverTimestamp, onSnapshot, doc } from "f
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { storageService } from '../../../firebase'
 import { v4 as uuidv4 } from 'uuid';
+
+import "nes.css/css/nes.min.css";
 
 function GuestBookForm({state}) {
   const [val, setVal] = useState('');
@@ -138,7 +136,11 @@ function GuestBookForm({state}) {
           }
 
           <div >
-            <input type="file" accept="image/*" onChange={handleFile} ref={inputFileRef}/>
+            <label class="nes-btn">
+              <span>Select your file</span>
+              <input type="file" accept="image/*" onChange={handleFile} ref={inputFileRef}/>
+            </label>
+            {/* <input type="file" /> */}
           </div>
         <Stack direction="row"  sx={{mt:2}}>
           <Button variant="contained" endIcon={<SendIcon />} onClick={handleAddData}>

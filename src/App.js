@@ -15,21 +15,21 @@ import { authService } from './firebase';
 function App({state, dispatch}) {
 
   useEffect(()=> {
-    authService.onAuthStateChanged(authService.getAuth(), (user) =>  {
+    authService.onAuthStateChanged(authService.getAuth(), async (user) =>  {
       if (user) {
-        console.log();
         const userObj = {
           userAccount: user.email, 
           userImg: user.photoURL, 
-          userId: user.uid
+          userId: user.uid,
+          userName: user.displayName,
         }
         if(user.providerData[0].providerId === 'github.com') {
-          userObj['userAccount'] = user.reloadUserInfo.screenName
+          // updateProfile 해서 유저네임 세팅???
+          userObj['userAccount'] = user.reloadUserInfo.screenName;
         }
 
         dispatch(actionIsLogin(true));
         dispatch(actionUserInfo(userObj));
-
       } else {
         dispatch(actionIsLogin(false));
         dispatch(actionUserInfo(false));

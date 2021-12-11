@@ -3,12 +3,10 @@ import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import logoImg from './images/wooram_logo.png';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
+import {Box, IconButton, Menu, MenuItem, Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
+
+import "nes.css/css/nes.min.css";
 
 const Nav = (props, {moveLinkTag}) => {
   const [dropDownNav, setDropDownNav] = useState(null);
@@ -64,7 +62,7 @@ const Nav = (props, {moveLinkTag}) => {
             >
               <MenuItem>
                 <Link to={`/`} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Home</Typography>
+                  <span className="nes-text is-primary">Home</span>
                 </Link>
               </MenuItem>
               <MenuItem>
@@ -74,7 +72,7 @@ const Nav = (props, {moveLinkTag}) => {
               </MenuItem>
               <MenuItem>
                 <Link to={`/guest-book`} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Guest Book</Typography>
+                  <Typography textAlign="center">GuestBook</Typography>
                 </Link>
               </MenuItem>
               <MenuItem>
@@ -94,25 +92,17 @@ const Nav = (props, {moveLinkTag}) => {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to={`/`} >
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} >
-                Home
-              </Button>
+            <Link to={`/`} style={{display: 'flex', alignItems: 'center', padding:'0 10px'}}>
+              <span className="nes-text" style={{color: '#fff'}}>Home</span>
             </Link>
-            <Link to={`/project`} >
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} >
-                Project
-              </Button>
+            <Link to={`/project`} style={{display: 'flex', alignItems: 'center', padding:'0 10px'}}>
+              <span className="nes-text" style={{color: '#fff'}}>Project</span>
             </Link>
-            <Link to={`/guest-book`} >
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} >
-                Guest Book
-              </Button>
+            <Link to={`/guest-book`} style={{display: 'flex', alignItems: 'center', padding:'0 10px'}}>
+              <span className="nes-text" style={{color: '#fff'}}>GuestBook</span>
             </Link>
-            <Link to={`/contact`} >
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} >
-                Contact
-              </Button>
+            <Link to={`/contact`} style={{display: 'flex', alignItems: 'center', padding:'0 10px'}}>
+              <span className="nes-text" style={{color: '#fff'}}>Contact</span>
             </Link>
           </Box>
     </Router>

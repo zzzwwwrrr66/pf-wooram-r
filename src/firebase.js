@@ -9,7 +9,7 @@ import {
   GoogleAuthProvider, 
   GithubAuthProvider, 
   signInWithPopup, 
-  fetchSignInMethodsForEmail 
+  fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
