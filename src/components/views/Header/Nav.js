@@ -27,7 +27,7 @@ const Nav = (props, {moveLinkTag}) => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-              <img src={logoImg} alt='logo' style={{maxWidth: '120px'}} />
+              <img src={logoImg} alt='logo' style={{maxWidth: '120px', objectFit:'contain'}} />
           </Typography>
           </Link>
 

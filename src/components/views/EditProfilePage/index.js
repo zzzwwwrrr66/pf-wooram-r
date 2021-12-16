@@ -5,13 +5,15 @@ import { actionIsLogin, actionUserInfo } from '../../../store'
 import { updateProfile } from "@firebase/auth";
 import { authService } from '../../../firebase';
 import { ref, uploadString, getDownloadURL, deleteObject } from "@firebase/storage";
-import { storageService } from '../../../firebase'
+import { storageService ,dbService} from '../../../firebase'
 import { v4 as uuidv4 } from 'uuid';
 
 import { CircularProgress } from '@mui/material';
-// import CircularProgress from '@mui/material/CircularProgress';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 
 import './style.css';
+
+import UserGuestBook from './UserGuestBook';
 
 // 내가 tweet 한거, 프로필 수정, where사용해서 내 tweet 가져오기(orderBy) -> 에러링크 들어가면 자동으로 만들어줌 
 // updateProfile 사용 수정-> displayName과 PhotoURL밖에 사용못함 -> 실시간으로 가져오려면 setuserObj(authService.currentUser.displayName or userId or photoUrl) => refreshUser function 을 만들것!!! 
@@ -50,7 +52,9 @@ function EditProfile({state, dispatch}) {
     profileRef.current.addEventListener('dragleave', function() {
       profileRef.current.classList.add('dragging');
     });
-  }, [])
+  }, []);
+
+ 
 
   const reloadUser = async () => {
     // change로 지켜보고 되는지 확인, loading 
@@ -158,7 +162,7 @@ function EditProfile({state, dispatch}) {
   return(
     <>
     <div style={{padding: "0 10px 0"}}>
-      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"800px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
+      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
           <h3 className="title">{state.userInfo.userName}'s Profile</h3>
           <div style={{ display: 'flex', flexDirection: 'column', margin: '0 auto', textAlgin:"center", padding: '15px 10px 0 15px', alignItems: 'center', justifyContent:"center" }}>
             <div 
@@ -166,10 +170,13 @@ function EditProfile({state, dispatch}) {
               ref={profileRef} 
               onClick={handleImgClick}
               onDrop={handleImgDrop}
-              style={{ backgroundImage: `url(${state.userInfo.userImg})`, textAlign:'center' }}
+              style={{ backgroundImage: `url(${state.userInfo.userImg})`, textAlign:'center', position: 'relative' }}
             >
+            <div style={{position: 'absolute',padding:'2px',backgroundColor: '#33bdb2', bottom: '0', right:'0', borderRadius: '5px'}}>
+              <span><CameraAltIcon style={{color:'#fff'}}/></span>
+            </div>
             <div className="dashes"></div>
-            {/* <label>Click or drag an image</label> */}
+            {/* <label>Click or drag an image</label> 카메라 아이콘넣기 */}
           </div>
             {
               state.userInfo.userAccount 
@@ -193,8 +200,9 @@ function EditProfile({state, dispatch}) {
     </div>
 
     <div style={{padding: "0 10px 0"}}>
-      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"800px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
+      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
           <h3 className="title">{state.userInfo.userName}'s Guest Book</h3>
+          <UserGuestBook />
       </div>
     </div>
     

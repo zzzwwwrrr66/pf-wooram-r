@@ -3,6 +3,8 @@ import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { dbService } from '../../../firebase';
 import { ref, deleteObject } from "@firebase/storage";
 import { storageService } from '../../../firebase'
+import Avatar from '@mui/material/Avatar';
+import moment from 'moment';
 
 function CommentList ({itemObj, isMine}) {
 
@@ -58,22 +60,45 @@ function CommentList ({itemObj, isMine}) {
           </ul>
         </>
         : <> 
-          <p>{itemObj.comment}</p>
+        <div className="nes-container is-rounded" style={{marginBottom: '15px'}}>
+          <div style={{display:'flex', alignItems: 'center', marginBottom:'5px'}}>
+            {
+              itemObj.userImg
+              ? <Avatar src={itemObj.userImg} />
+              : <Avatar />
+            }
+            <p style={{margin: '0 0 0 5px' }}>
+              {itemObj.userName || itemObj.userAccount}
+            </p>
+          </div>
+          <p style={{fontSize:'14px', marginBottom: '10px'}}>
+            {
+              moment(itemObj.createAt).diff(Date.now()) > 0 
+              ? moment(itemObj.createAt).startOf('day').fromNow()
+              : moment(itemObj.createAt).startOf('hour').fromNow()
+            }
+          </p>
+          <div style={{marginBottom: '10px'}}>
+            <p>{itemObj.comment}</p>
+          </div>
           {
-            itemObj.imgInfo && 
-            <div style={{maxWidth:'500px', width:`${itemObj.imgInfo.width}px`}}>
-              <img src={itemObj.imgInfo.url} alt="" style={{width:'100%'}} />
-            </div>
-          }
-          {
+                itemObj.imgInfo && 
+                <div style={{textAlign: 'center'}}>
+                  <img src={itemObj.imgInfo.url} alt="" style={{maxWidth:`500px`,width:'100%'}} />
+                </div>
+            }
+            {
             isMine &&
             <ul>
               <li>
-                <button onClick={handleDeleteItem(`${itemObj.commentId}`)}>Delete</button>
-                <button onClick={hadleUpdateToggle}>Update</button>
+              <button type="button" className="nes-btn is-small" onClick={handleDeleteItem(`${itemObj.commentId}`)} >Delete</button>
               </li>
             </ul>
           }
+        </div>
+        
+          
+          
         </>
       }
       

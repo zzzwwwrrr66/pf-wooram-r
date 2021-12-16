@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+ul.pagination li {
+  display: inline-block;
+  padding: 2px;
+  border: 1px solid #ddd;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  margin: 0 2px 0;
+}
+ul.pagination li a {
+  color: #000;
+}
+ul.pagination li:nth-child(2) {
+  margin-right: 8px;
+}
+ul.pagination li:nth-child(8) {
+  margin-left: 8px;
+}
+
+ul.pagination li.active {
+  background-color: #33bdb2;
+}
+ul.pagination li.active a {
+  color: #fff;
+}

@@ -68,8 +68,8 @@ function GuestBookForm({state}) {
         const fileRef = ref(storageService, `${state.userInfo.userId}/${uuidv4()}`);
         const response = await uploadString(fileRef, fileInfo.url, "data_url");
         imgUrl = await getDownloadURL(response.ref);
-      }
 
+      }
       if(val){
         await addDoc(collection(dbService, "guest_book"), {
           comment: val,
@@ -77,6 +77,7 @@ function GuestBookForm({state}) {
           userAccount: state.userInfo.userAccount,
           userImg: state.userInfo.userImg,
           userId: state.userInfo.userId,
+          userName : state.userInfo.userName,
           imgInfo: imgUrl 
           ? {
             url : imgUrl,
@@ -101,54 +102,40 @@ function GuestBookForm({state}) {
 
   return (
     <>
-    <h1>GuestBookForm</h1>
-      <Container style={{
-        display:'flex',
-        justifyContent: 'center'
-      }}>
-        <Box
-        id="outlined-multiline-static"
-          component="form"
-          sx={{
-            maxWidth: '100%',
-          }}
-        >
-          <TextField
-            id="outlined-multiline-static"
-            fullWidth
-            value={val}
-            placeholder=""
-            required
-            sx={{
-              width: 500,
-              maxWidth: '100%',
-            }}
-            onChange={hadleVal}
-          />
-          {
-            fileInfo && 
-            <div style={{display:'flex', justifyContent: 'center', position: 'relative', flexDirection: 'column'}}>
-              <div>
-                <img src={fileInfo.url} style={{width:`${fileInfo.width}px`,maxWidth:`450px`}} alt="" />
-              </div>
-              <p><button type="button" onClick={handleClearImg}>clear img</button></p>
+    <div style={{padding: "0 10px 0"}}>
+      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
+        <h3 className="title">Guest Book</h3>
+
+        <div>
+          <label htmlFor="textarea_field">Your Guestbook</label>
+          <textarea id="textarea_field" className="nes-textarea" onChange={hadleVal} value={val} required></textarea>
+        </div>
+
+        {
+          fileInfo && 
+          <div style={{paddingTop:'5px'}}>
+            <div style={{textAlign: 'center'}}>
+              <img src={fileInfo.url} style={{maxWidth:`500px`,width:'100%', objectFit:'cover'}} alt="" />
             </div>
+            {/* <p><button type="button" onClick={handleClearImg} style={{padding:'5px'}}>clear img</button></p> */}
+            <button type="button" className="nes-btn is-small" onClick={handleClearImg} style={{padding:'5px'}}>Clear Img</button>
+          </div>
           }
 
-          <div >
-            <label class="nes-btn">
-              <span>Select your file</span>
+          <div style={{paddingTop:'10px'}}>
+            <label className="nes-btn is-small">
+              <span>Select Your Image</span>
               <input type="file" accept="image/*" onChange={handleFile} ref={inputFileRef}/>
             </label>
             {/* <input type="file" /> */}
           </div>
-        <Stack direction="row"  sx={{mt:2}}>
-          <Button variant="contained" endIcon={<SendIcon />} onClick={handleAddData}>
-            Send
-          </Button>
-        </Stack>
-      </Box>
-    </Container>
+          <div style={{display:'flex', justifyContent: 'center', position: 'relative', flexDirection: 'column', paddingTop:'15px'}}>
+            <button type="button" className="nes-btn is-main" onClick={handleAddData}>Send</button>
+          </div>
+      </div>
+    </div>
+
+    
     </>
   )
 }

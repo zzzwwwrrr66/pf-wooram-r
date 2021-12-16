@@ -21,7 +21,7 @@ a{color:#000;text-decoration:none;}
 
 html,
 body {
-	cursor: default;
+	cursor: default !important;
 }
 a,
 label,
@@ -39,4 +39,36 @@ input[disabled] {
 
 input {
   font-size: 16px;
+}
+.nes-btn {
+	cursor: pointer !important;
+}
+a, button{
+	cursor: pointer !important;
+}
+/* btn */
+.nes-btn.is-main {
+	background-color: #33bdb2;
+	color: #fff;
+}
+.nes-btn.is-main:hover {
+	background-color: #008b82;
+	color: #fff;
+}
+.nes-btn.is-main::after {
+	box-shadow: inset -4px -4px #005d56;
+}
+.nes-btn.is-main:hover::after {
+  box-shadow: inset -6px -6px #005d56
+}
+.nes-btn.is-main:focus {
+  box-shadow: none
+}
+
+.nes-btn.is-main:active:not(.is-disabled)::after {
+  box-shadow: none
+}
+
+.nes-btn.is-small {
+	padding: 2px 3px;
 }
