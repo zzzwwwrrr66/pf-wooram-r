@@ -15,6 +15,11 @@ const mainStore = createSlice({
       currentPage: 1,
       data : ProjectData,
       dataCount : ProjectData.length,
+      detailIsOpen: false,
+      detailId: null,
+    },
+    guestBookStatus: {
+      currentPage: 1,
     }
   },
   reducers: {
@@ -49,6 +54,14 @@ const mainStore = createSlice({
       console.log(action.payload);
       state.projectStatus.currentYear = action.payload;
     },
+    actionProjectDetailOpen: (state, action) => {
+      state.projectStatus.detailIsOpen = true;
+      state.projectStatus.detailId = action.payload;
+    },
+    actionProjectDetailClose: (state, action) => {
+      state.projectStatus.detailIsOpen = false;
+      state.projectStatus.detailId = null
+    },
   }
 });
 const projectStore = createSlice({
@@ -70,7 +83,9 @@ export const {
   actionProjectChangePage, 
   actionProjectChangeLabel, 
   actionProjectDeleteLabel,
-  actionProjectChangeYear
+  actionProjectChangeYear,
+  actionProjectDetailOpen,
+  actionProjectDetailClose
 } = mainStore.actions;
 
 export default store;

@@ -3,11 +3,9 @@ import './Paging.css';
 import Pagination from "react-js-pagination";
 
 import { connect } from 'react-redux';
-import {actionProjectChangePage} from '../../../store';
 
 
-
-const Paging = ({state, dispatch}) => {
+const Paging = ({state, dispatch, actionProjectChangePage, itemsCount}) => {
   const [allCount, setAllCount] = useState(0);
 
   useEffect(() => {
@@ -27,7 +25,7 @@ const Paging = ({state, dispatch}) => {
   return (
     <Pagination
       activePage={page}
-      itemsCountPerPage={5}
+      itemsCountPerPage={itemsCount}
       totalItemsCount={
         allCount && allCount
       }

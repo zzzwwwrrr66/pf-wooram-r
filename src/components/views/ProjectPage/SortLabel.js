@@ -45,7 +45,8 @@ const SortLabel = ({state, dispatch}) => {
       <button value='html' onClick={clickLabel} ref={el => btnRef.current[0] = el}>html</button>
       <button value='css' onClick={clickLabel} ref={el => btnRef.current[1] = el}>css</button>
       <button value='javascript' onClick={clickLabel} ref={el => btnRef.current[2] = el}>javascript</button>
-      <button value='vue' onClick={clickLabel} ref={el => btnRef.current[3] = el}>vue</button>
+      <button value='ajax' onClick={clickLabel} ref={el => btnRef.current[3] = el}>ajax</button>
+      <button value='vue' onClick={clickLabel} ref={el => btnRef.current[4] = el}>vue</button>
     </div>
     </>
   );

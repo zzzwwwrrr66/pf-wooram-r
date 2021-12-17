@@ -25,7 +25,7 @@ export default [
       "info_02" : "",
       "pc_img": ['pc_dEndCmp.png'],
       "sp_img": ['sp_dEndCmp.png'],
-      "tech" : ["html", "css", "javascript", "AJAX"],
+      "tech" : ["html", "css", "javascript", "ajax"],
       "titleImg" : "list_dCmp.jpg", 
       
   },
@@ -40,7 +40,7 @@ export default [
       "info_02" : "",
       "pc_img": ['pc_dCmp.png'],
       "sp_img": ['sp_dCmp.png'],
-      "tech" : ["html", "css", "javascript", "AJAX"],
+      "tech" : ["html", "css", "javascript", "ajax"],
       "titleImg" : "list_dCmp.jpg", 
       
   },
