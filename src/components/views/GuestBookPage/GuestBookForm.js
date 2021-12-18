@@ -102,8 +102,6 @@ function GuestBookForm({state}) {
 
   return (
     <>
-    <div style={{padding: "0 10px 0"}}>
-      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
         <h3 className="title">Guest Book</h3>
 
         <div>
@@ -132,8 +130,6 @@ function GuestBookForm({state}) {
           <div style={{display:'flex', justifyContent: 'center', position: 'relative', flexDirection: 'column', paddingTop:'15px'}}>
             <button type="button" className="nes-btn is-main" onClick={handleAddData}>Send</button>
           </div>
-      </div>
-    </div>
 
     
     </>

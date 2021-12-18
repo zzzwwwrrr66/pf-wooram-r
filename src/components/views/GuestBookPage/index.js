@@ -55,9 +55,22 @@ function GuestBook({state}) {
 
   return(
     <>
-    <GuestBookForm  />
-    <div style={{padding: "0 10px 0"}}>
-      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
+    <div style={{padding: "0 10px 0", overflowX:'hidden'}}>
+      <div 
+        className="nes-container with-title" 
+        style={{
+          position: "relative", 
+          width:"100%", 
+          maxWidth:"860px", 
+          margin: "30px auto 0",
+          padding:'1.5rem 1rem', 
+          marginTop: "30px",
+          marginBottom: '30px', 
+          boxSizing:"border-box" 
+        }}
+      >
+      <GuestBookForm  />
+      
         <h3 className="title">Guest Book List</h3>
         <section className="message-list">
         {
@@ -74,43 +87,44 @@ function GuestBook({state}) {
           : <div style={{display:'flex', justifyContent: 'center'}}><CircularProgress/></div>
         }
       </section>
-      </div>
+      
 
-      <nav style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
-      <List>
-        {items.map(({ page, type, selected, ...item }, index) => {
-          let children = null;
+        <nav style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
+        <List>
+          {items.map(({ page, type, selected, ...item }, index) => {
+            let children = null;
 
-          if (type === 'start-ellipsis' || type === 'end-ellipsis') {
-            children = '…';
-          } else if (type === 'page') {
-            children = (
-              <button
-                type="button"
-                style={{
-                  fontWeight: selected ? 'bold' : undefined, padding: '2px', margin:'0 5px'
-                }}
-                {...item}
-              >
-                {page}
-              </button>
-            );
-          } else {
-            children = (
-              <button type="button" {...item} style={{padding: '2px', margin:'0 10px'}}>
-                {
-                type == 'next'
-                ? `>`
-                : `<`
-                }
-              </button>
-            );
-          }
+            if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+              children = '…';
+            } else if (type === 'page') {
+              children = (
+                <button
+                  type="button"
+                  style={{
+                    fontWeight: selected ? 'bold' : undefined, padding: '2px', margin:'0 5px'
+                  }}
+                  {...item}
+                >
+                  {page}
+                </button>
+              );
+            } else {
+              children = (
+                <button type="button" {...item} style={{padding: '2px', margin:'0 10px'}}>
+                  {
+                  type == 'next'
+                  ? `>`
+                  : `<`
+                  }
+                </button>
+              );
+            }
 
-          return <li key={index}>{children}</li>;
-        })}
-      </List>
-    </nav>
+            return <li key={index}>{children}</li>;
+          })}
+        </List>
+      </nav>
+    </div>
     </div>
     
     </>

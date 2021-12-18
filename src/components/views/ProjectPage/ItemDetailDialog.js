@@ -25,14 +25,14 @@ function ItemDetailDialog({closeDialog, state, }) {
   }, [state.projectStatus.detailId]);
 
   return (
-    <Dialog onClose={closeDialog} open={state.projectStatus.detailIsOpen} maxWidth='md'>
+    <Dialog onClose={closeDialog} open={state.projectStatus.detailIsOpen} maxWidth='md' sx={{margin:'10px'}} style={{margin:'10px'}}>
       <div className="nes-container with-title is-centered " style={{maxWidth: '900px', width: '100%'}}> 
         {
           currentItem&&
           <>
             <p style={{fontSize: '20px'}}>{currentItem.title}</p>
             <p>{currentItem.kinds}</p>
-            <div>
+            <div style={{textAlign:'left'}}>
               {
                 currentItem.page_url &&
                 <a href={currentItem.page_url} target='_blank' style={{margin:'0 5px 0', color: '#33bdb2'}} >Move PC Page</a>
@@ -42,11 +42,43 @@ function ItemDetailDialog({closeDialog, state, }) {
                 <a href={currentItem.page_url_02} target='_blank' style={{margin:'0 5px 0', color: '#33bdb2'}}>Move SP Page</a>
               }
             </div>
-            <ul>
+            <ul style={{textAlign: 'left'}}>
             {
-              currentItem.info_01
+              currentItem.info_01.split(',').map((v, i)=>(
+                v !== '' &&
+                <li key={i}>{v}</li>
+              ))
             }
             </ul>
+            <div className='img-wrap'>
+              {
+                currentItem.pc_img.length > 0 &&
+                <>
+                <p style={{marginTop:'20px'}}>PC image</p>
+                {
+                  currentItem.pc_img.map(imgName => (
+                    <div key={imgName}>
+                      <img src={require(`./images/${imgName}`).default} alt='' style={{maxWidth:'', width: '100%'}} />
+                    </div>
+                  ))
+                }
+                </>
+                
+              }
+              {
+                currentItem.sp_img.length > 0 &&
+                <>
+                <p style={{marginTop:'20px'}}>SP image</p>
+                {
+                  currentItem.sp_img.map(imgName => (
+                    <div key={imgName}>
+                    <img src={require(`./images/${imgName}`).default} alt='' style={{maxWidth:'364px', width: '100%'}} />
+                    </div>
+                  ))
+                }
+                </>
+              }
+            </div>
           </>
         }
         

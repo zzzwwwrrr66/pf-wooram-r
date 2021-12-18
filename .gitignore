@@ -26,4 +26,6 @@ yarn-error.log*
 .env.production
 
 
-/components/niews/ProjectPage/ProjectData.js
+/src/components/views/ProjectPage/ProjectData.js
+
+/src/components/views/ProjectPage/images
