@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { actionProjectChangeLabel, actionProjectDeleteLabel } from '../../../store';
 
 import _ from 'lodash';
-import './SortLabel.css'
+import './css/Sort.css';
 
 const SortLabel = ({state, dispatch}) => {
   const [currentLabel, setCurrentLabel] = useState([]);
@@ -40,8 +40,8 @@ const SortLabel = ({state, dispatch}) => {
   
   return (
     <>
-    <h3>sort label</h3>
-    <div>
+    <h4>sort label</h4>
+    <div className='sort-skill-btn-wrap'>
       <button value='html' onClick={clickLabel} ref={el => btnRef.current[0] = el}>html</button>
       <button value='css' onClick={clickLabel} ref={el => btnRef.current[1] = el}>css</button>
       <button value='javascript' onClick={clickLabel} ref={el => btnRef.current[2] = el}>javascript</button>

@@ -280,7 +280,7 @@ export default [
       "pc_img": [],
       "sp_img": ['sp_growing.png'],
       "tech" : [ "css"],
-      "titleImg" : "list_growing.jpg",
+      "titleImg" : "list_growing.png",
   },
   {
       "index": 21,

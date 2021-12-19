@@ -5,6 +5,7 @@ import { ref, deleteObject } from "@firebase/storage";
 import { storageService } from '../../../firebase'
 import Avatar from '@mui/material/Avatar';
 import moment from 'moment';
+import {CircularProgress, usePagination} from '@mui/material/';
 
 function CommentList ({itemObj, isMine}) {
 
@@ -82,11 +83,11 @@ function CommentList ({itemObj, isMine}) {
             <p>{itemObj.comment}</p>
           </div>
           {
-                itemObj.imgInfo && 
-                <div style={{textAlign: 'center'}}>
-                  <img src={itemObj.imgInfo.url} alt="" style={{maxWidth:`500px`,width:'100%'}} />
-                </div>
-            }
+            itemObj.imgInfo 
+            && <div style={{textAlign: 'center'}}>
+              <img src={itemObj.imgInfo.url} alt="" style={{maxWidth:`200px`,width:'100%'}} />
+            </div>
+          }
             {
             isMine &&
             <ul>
@@ -96,9 +97,6 @@ function CommentList ({itemObj, isMine}) {
             </ul>
           }
         </div>
-        
-          
-          
         </>
       }
       

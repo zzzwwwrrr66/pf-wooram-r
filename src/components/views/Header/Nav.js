@@ -6,7 +6,7 @@ import logoImg from './images/wooram_logo.png';
 import {Box, IconButton, Menu, MenuItem, Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import "nes.css/css/nes.min.css";
+import './Header.css'
 
 const Nav = (props, {moveLinkTag}) => {
   const [dropDownNav, setDropDownNav] = useState(null);
@@ -57,29 +57,30 @@ const Nav = (props, {moveLinkTag}) => {
               open={Boolean(dropDownNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none'}, p: 2
               }}
+              style={{padding: '10px'}}
             >
-              <MenuItem>
-                <Link to={`/`} onClick={handleCloseNavMenu}>
-                  <span className="nes-text is-primary">Home</span>
+              <li style={{textAlign: 'center',margin:'0 0 10px' }}>
+                <Link to={`/`} onClick={handleCloseNavMenu} style={{display: 'block',padding: '5px 0', color: '#33bdb2'}}>
+                  <span className="nes-text">Home</span>
                 </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to={`/project`} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Project</Typography>
+              </li>
+              <li style={{textAlign: 'center', margin: '0 0 10px'}}>
+                <Link to={`/project`} onClick={handleCloseNavMenu} style={{display: 'block',padding: '5px 0', color: '#33bdb2'}}>
+                  <span className="nes-text">Project</span>
                 </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to={`/guest-book`} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">GuestBook</Typography>
+              </li>
+              <li style={{textAlign: 'center', margin: '0 0 10px'}}>
+                <Link to={`/guest-book`} onClick={handleCloseNavMenu} style={{display: 'block',padding: '5px 0', color: '#33bdb2'}}>
+                  <span className="nes-text">GuestBook</span>
                 </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to={`/contact`} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Contact</Typography>
+              </li>
+              <li style={{textAlign: 'center'}}>
+                <Link to={`/contact`} onClick={handleCloseNavMenu} style={{display: 'block',padding: '5px 0', color: '#33bdb2'}}>
+                  <span className="nes-text">Contact</span>
                 </Link>
-              </MenuItem>
+              </li>
             </Menu>
           </Box>
           <Typography

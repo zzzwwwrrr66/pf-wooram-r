@@ -2,6 +2,8 @@ import React, { useState, useReducer, useEffect, memo } from "react";
 import { connect } from 'react-redux';
 import { actionProjectChangeYear } from '../../../store';
 
+import './css/Sort.css';
+
 const SortYear = ({state, dispatch}) => {
   const [currentSelect, setCurrentSelect] = useState('all');
 
@@ -19,7 +21,10 @@ const SortYear = ({state, dispatch}) => {
 
   return (
     <>
-    <div className="nes-select">
+    <h4 style={{marginTop:'10px'}}>
+      sort year
+    </h4>
+    <div className="nes-select select-wrap">
       <select id="default_select" onChange={changeSelect} value={currentSelect}>
         <option value="all">All</option>
         <option value="2020">2020</option>

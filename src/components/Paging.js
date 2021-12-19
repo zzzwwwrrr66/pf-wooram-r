@@ -1,25 +1,24 @@
 import React, { useState, useReducer, useEffect, memo } from "react";
-import './Paging.css';
+import './css/Paging.css';
 import Pagination from "react-js-pagination";
 
 import { connect } from 'react-redux';
 
 
-const Paging = ({state, dispatch, actionProjectChangePage, itemsCount}) => {
+const Paging = ({state, dispatch, actionChangePageNum, itemsCount, itemsAllCount}) => {
   const [allCount, setAllCount] = useState(0);
 
   useEffect(() => {
-    console.log('paging rerender');
-    setAllCount(state.projectStatus.dataCount);
+    if(itemsAllCount) setAllCount(itemsAllCount);
     return () => {
     }
-  }, [])
+  }, [itemsAllCount]);
 
   const [page, setPage] = useState(1);
 
   const handlePageChange = (pageNum) => {
     setPage(pageNum);
-    dispatch(actionProjectChangePage(pageNum));
+    dispatch(actionChangePageNum(pageNum));
   };
 
   return (

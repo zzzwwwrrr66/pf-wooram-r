@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import {actionProjectDetailOpen, actionProjectDetailClose} from '../../../store';
-import ItemDetailDialog from './ItemDetailDialog'
+import ItemDetailDialog from './ItemDetailDialog';
+
+import './css/ItemList.css'
 
 
 const ItemList = ({state, dispatch, openDialog}) => {
@@ -12,7 +14,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
   const [currentPage, setCurrentPage] = useState(state.projectStatus.currentPage);
   const [currentCount, setCurrentCount] = useState(0);
   
-
+  // currentPage
   useEffect(() => {
     console.log(state.projectStatus.data);
     setAllItems(prev=>[...prev, ...state.projectStatus.data]);
@@ -23,6 +25,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
     setCurrentCount(state.projectStatus.data.length);
   }, [state.projectStatus.currentPage]);
 
+  // currentYear, currentLabel
   useEffect(() => {
     var initData = pagingItems(state.projectStatus.data);
     let sortData = [];
@@ -36,9 +39,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
     for(let i = 0; i < initData.length; i++) {
       // label
       if(state.projectStatus.currentLabel.length) {
-        console.log('current label ',state.projectStatus.currentLabel, ' item label ', initData[i].tech);
         let diff = _.intersection(state.projectStatus.currentLabel, initData[i].tech);
-        console.log(diff);
         if(!diff.length) continue; 
       }
 
@@ -56,7 +57,6 @@ const ItemList = ({state, dispatch, openDialog}) => {
     const result = [];
     let startNum = ((state.projectStatus.currentPage - 1) * 10 + 1) - 1;
     let lastNum = state.projectStatus.currentPage * 10;
-    console.log('currentPage ', state.projectStatus.currentPage, 'startNum', startNum, ' lastNum', lastNum);
     for(let i = startNum; i < lastNum; i++) {
       if(itemArr[i]) result.push(itemArr[i])
     }
@@ -75,30 +75,42 @@ const ItemList = ({state, dispatch, openDialog}) => {
     <p>currentPage : {state.projectStatus.currentPage}</p>
     <p>currentYear : {state.projectStatus.currentYear}</p> */}
 
-    <div style={{display:'flex', justifyContent: 'flex-end'}}>
-      <p>COUNT : {currentCount}</p>
+    <div style={{display:'flex', justifyContent: 'flex-end',margin: '15px 0'}}>
+      <p style={{margin: '0'}}>COUNT : {currentCount}</p>
     </div>
     <ul>
       {
-        currentItems.length && 
-        currentItems.map(v =>
+        currentItems.length > 0  
+        ? currentItems.map((v, i) =>
           (
-            <li key={v.index} style={{backgroundColor: '#eee', marginBottom: '15px'}}>
-              <p>{v.title}</p>
-              <p>{v.add_year}</p>
-              <div>
-                {
-                  v.tech.map(skill=>(
-                    <span>{skill} </span>
-                  ))
-                }
+            <li key={i} className='list-wrap' >
+              <div style={{marginRight: '10px'}}>
+                <p>{v.add_year}作 【{v.kinds}】</p>
+                <p style={{fontWeight: 'bold'}}>{v.title}</p>
+                <div className='badge-wrap'>
+                  {
+                    v.tech.map((skill, i)=>(
+                      <span className='nes-badge badge-txt' style={{margin:'7.5px 15px'}}>
+                        <span className='is-warning'>{skill} </span>
+                      </span>
+                    ))
+                  }
+                </div>
+                <div style={{marginTop: '10px'}}>
+                  <button type="button" className="nes-btn is-small is-main btn" onClick={()=>openDialog(v.index)}>learn more</button>
+                </div>
               </div>
-              <div >
-                <button type="button" className="nes-btn is-small is-main" onClick={()=>openDialog(v.index)}>learn more</button>
-              </div>
+              {
+                v.titleImg &&
+                <div>
+                  <img alt='' className='list-img' src={require(`./images/${v.titleImg}`).default} />
+                </div>
+              }
+              
             </li>
           )
           )
+        :<p>該当するアイテムがありません。</p>
         }
         <ItemDetailDialog  />
     </ul>

@@ -1,0 +1,23 @@
+button {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  background-color: #efefef;
+}
+button:last-child {
+  margin-right: 0px;
+}
+button.active {
+  background-color: #808080;
+}
+
+.select-wrap {
+  width: 438px;
+}
+.sort-skill-btn-wrap button {
+  padding: 3px;
+}
+@media screen and (max-width: 768px) {
+  .select-wrap {
+    width: 100%;
+  }
+}

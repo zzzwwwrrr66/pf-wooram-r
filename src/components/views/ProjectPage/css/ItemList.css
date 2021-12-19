@@ -1,0 +1,44 @@
+p {
+  margin-bottom: 10px;
+}
+
+.list-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #eee;
+  margin-bottom: 15px;
+  border: 4px solid #000;
+}
+
+.list-img {
+  height: 188px;
+  object-fit: cover;
+  width: 260px;
+}
+.btn {
+  width: 350px;
+}
+
+@media screen and (max-width: 768px) {
+  .list-wrap {
+    flex-direction: column-reverse;
+  }
+  .list-img {
+    height: 45vw;
+    object-fit: contain;
+    width: 100%;
+  }
+  .badge-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .badge-txt {
+    font-size: 12px
+  }
+  .btn {
+    width: 100%;
+  }
+}

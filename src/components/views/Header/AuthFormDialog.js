@@ -48,6 +48,9 @@ function AuthFormDialog({theme, open, headerDispatch}){
   const [newAccount, setNewAccount] = useState(false);
   const [errMessage, setErrMessage] = useState('');
 
+  const [loginBtnIsActive, setLoginBtnIsActive] = useState(false);
+  const [createBtnIsActive, setCreateBtnIsActive] = useState(true);
+
   const init = () => {
       handleCloseIsOpen();
       setErrMessage('');
@@ -55,7 +58,9 @@ function AuthFormDialog({theme, open, headerDispatch}){
         email: '',
         password: '',
         showPassword: false,
-      })
+      });
+      setLoginBtnIsActive(false);
+      setCreateBtnIsActive(true);
   }
 
   const handleCloseIsOpen = () => {
@@ -71,18 +76,22 @@ function AuthFormDialog({theme, open, headerDispatch}){
     });
     
   };
-  const handleMouseDownPassword = (e) => {
-    e.preventDefault();
-  };
   const handleChange = (inputType) => (e) => {
     setValues({ ...values, [inputType]: e.target.value });
   };
   
   const clickCreateUser = (e) => {
+    if(e.target.classList.contains('is-disabled')) {
+      setCreateBtnIsActive(false);
+      setLoginBtnIsActive(true);
+      setErrMessage('');
+      return
+    };
     authService.createUserWithEmailAndPassword(authService.getAuth(), values.email, values.password)
     .then(res=>{ 
       console.log(res);
       init();
+      alert('Create Success!');
     })
     .catch( (err, a) =>{
       setErrMessage(errorMessageFnc(err.message))
@@ -90,11 +99,18 @@ function AuthFormDialog({theme, open, headerDispatch}){
   }
 
   const handleSignIn = (e) => {
+    if(e.target.classList.contains('is-disabled')) {
+      setCreateBtnIsActive(true);
+      setLoginBtnIsActive(false);
+      setErrMessage('');
+      return
+    };
     authService.signInWithEmailAndPassword(authService.getAuth(), values.email, values.password)
     .then(res=>{ 
       // 다이어로그 모달 성공했습니다
       console.log(res);
       init();
+      alert('Login! Success');
     })
     .catch( (err, a) =>{
       console.log(err.message);
@@ -134,57 +150,65 @@ function AuthFormDialog({theme, open, headerDispatch}){
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle>{'Login'}</DialogTitle>
     <Container maxWidth="sm">
     <Box
       noValidate
       autoComplete="off"
       sx={{mt:2, mb:2 }}
-    >
-      <TextField
-        required
-        id=""
-        label="Email"
-        type="email"
-        defaultValue={values.email}
-        onChange={handleChange('email')}
-        fullWidth
-        sx={{mb:3}}
-      />
-      <FormControl fullWidth variant="outlined" required >
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-password"
-          type={values.showPassword ? 'text' : 'password'}
-          value={values.password}
-          onChange={handleChange('password')}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-          sx={{mb:3}}
+      >
+      <h2>Login</h2>
+      <div className="nes-field" style={{marginBottom: '10px'}}>
+        <label htmlFor="email_field">Your email</label>
+        <input type="text" id="email_field" className="nes-input" value={values.email} onChange={handleChange('email')} required />
+      </div>
+      <div className="nes-field">
+        <label htmlFor="email_field">Your password</label>
+        <input 
+          type={values.showPassword ? 'text' : 'password'} 
+          id="email_field" 
+          className="nes-input" 
+          value={values.password} 
+          onChange={handleChange('password')} 
+          required
         />
-        {
-          errMessage? <p style={{marginBottom:'10px', color: 'red'}}>{errMessage}</p>
-          : null
-        }
-        <Button variant="outlined" theme={theme} sx={{mb:1}} type="button" onClick={handleSignIn}>Sign In</Button>
-        <Button variant="outlined" theme={theme} sx={{mb:3}} type="button" onClick={clickCreateUser}>create new account</Button>
-      </FormControl>
+      </div>
+      <label className='checkbox-label'>
+        <input type="checkbox" className="nes-checkbox" checked={values.showPassword} onChange={handleClickShowPassword} />
+        <span>password display</span>
+      </label>
+      {
+        errMessage? <p style={{marginBottom:'10px', color: 'red'}}>{errMessage}</p>
+        : null
+      }
+
+      <div>
+        <button 
+          type="button" 
+          className={loginBtnIsActive ? 'nes-btn is-disabled' : 'nes-btn'}
+          onClick={handleSignIn} 
+          style={{width: '100%', marginTop:'10px', marginBottom: '10px'}}
+        >Sign In</button>
+      </div>
+      <div>
+        <button 
+          type="button" 
+          className={createBtnIsActive ? 'nes-btn is-disabled' : 'nes-btn'}
+          onClick={clickCreateUser} 
+          style={{width: '100%'}}
+        >create new account</button>
+      </div>
+        
     </Box>
-        <Stack direction="column" spacing={1} sx={{mb:2}}>
-          <Button variant="outlined" endIcon={<GoogleIcon />} theme={theme} name="google" onClick={clickSocialSignIn}>Sign Up Google</Button>
-          <Button variant="outlined" endIcon={<GitHubIcon />} theme={theme} name="github" onClick={clickSocialSignIn}>Sign Up github</Button>
-        </Stack>
+    <div style={{marginBottom: '16px'}}>
+      <button type="button" class="nes-btn is-main" name="google" onClick={clickSocialSignIn} style={{display:'flex', width: '100%', marginBottom: '15px', justifyContent: 'center'}}>
+        <span>Sign Up Google</span>
+        <GoogleIcon sx={{ml: 1}}/>
+      </button>
+      <button type="button" class="nes-btn is-main" name="github" onClick={clickSocialSignIn} style={{display:'flex',width: '100%', justifyContent: 'center'}}>
+        <span>Sign Up github</span>
+        <GitHubIcon sx={{ml: 1}}/>
+      </button>
+    </div> 
     </Container>
     </Dialog>
   )

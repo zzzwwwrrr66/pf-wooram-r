@@ -41,7 +41,7 @@ const LoginBtn = ({state}) => {
             state.userInit ?
             state.userInfo && state.userInfo.userImg 
             ? <Avatar alt="Remy Sharp" src={state.userInfo.userImg} sx={{objectFit:'initial'}}/>
-            :<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            : <Avatar />
             : <CircularProgress />
           }
         </IconButton>

@@ -127,7 +127,7 @@ function GuestBookForm({state}) {
             </label>
             {/* <input type="file" /> */}
           </div>
-          <div style={{display:'flex', justifyContent: 'center', position: 'relative', flexDirection: 'column', paddingTop:'15px'}}>
+          <div style={{display:'flex', justifyContent: 'center', position: 'relative', flexDirection: 'column', paddingTop:'15px', marginBottom: '30px'}}>
             <button type="button" className="nes-btn is-main" onClick={handleAddData}>Send</button>
           </div>
 

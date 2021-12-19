@@ -74,9 +74,13 @@ function Header({state}) {
             <LoginBtn isLogin={state.isLogin} />
             : 
             <>
-            <Button variant="outlined" startIcon={<AccountCircleIcon />} onClick={handleOpenLoginDialog} style={{color:'#fff', borderColor:'#fff'}} >
-              Login
-            </Button>
+            <button type="button" className="nes-btn is-small" onClick={handleOpenLoginDialog}>
+              <span>Login</span>
+              <AccountCircleIcon />
+            </button>
+            {/* <Button variant="outlined" startIcon={<AccountCircleIcon />} onClick={handleOpenLoginDialog} style={{color:'#fff', borderColor:'#fff'}} >
+              Loginasd
+            </Button> */}
             </>
             : <CircularProgress />
           }

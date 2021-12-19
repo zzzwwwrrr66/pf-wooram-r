@@ -1,10 +1,11 @@
 import React, { useState, useReducer, useEffect, memo } from "react";
 import { connect } from 'react-redux';
-import {actionProjectDetailOpen, actionProjectDetailClose} from '../../../store'
+import {actionProjectDetailOpen, actionProjectDetailClose} from '../../../store';
 
 
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
+import CloseIcon from '@mui/icons-material/Close';
 
 function ItemDetailDialog({closeDialog, state, }) {
   const [currentItem, setCurrentItem] = useState(null);
@@ -26,7 +27,7 @@ function ItemDetailDialog({closeDialog, state, }) {
 
   return (
     <Dialog onClose={closeDialog} open={state.projectStatus.detailIsOpen} maxWidth='md' sx={{margin:'10px'}} style={{margin:'10px'}}>
-      <div className="nes-container with-title is-centered " style={{maxWidth: '900px', width: '100%'}}> 
+      <div className="nes-container with-title is-centered " style={{positon: 'relative' ,maxWidth: '900px', width: '100%'}}> 
         {
           currentItem&&
           <>
@@ -35,11 +36,11 @@ function ItemDetailDialog({closeDialog, state, }) {
             <div style={{textAlign:'left'}}>
               {
                 currentItem.page_url &&
-                <a href={currentItem.page_url} target='_blank' style={{margin:'0 5px 0', color: '#33bdb2'}} >Move PC Page</a>
+                <a href={currentItem.page_url} target='_blank' rel="noopener" style={{margin:'0 5px 0', color: '#33bdb2'}} >Move PC Page</a>
               }
               {
                 currentItem.page_url_02 &&
-                <a href={currentItem.page_url_02} target='_blank' style={{margin:'0 5px 0', color: '#33bdb2'}}>Move SP Page</a>
+                <a href={currentItem.page_url_02} target='_blank' rel="noopener" style={{margin:'0 5px 0', color: '#33bdb2'}}>Move SP Page</a>
               }
             </div>
             <ul style={{textAlign: 'left'}}>
@@ -81,7 +82,7 @@ function ItemDetailDialog({closeDialog, state, }) {
             </div>
           </>
         }
-        
+        <CloseIcon fontSize='large' style={{cursor: 'pointer', position: 'absolute', top:'10px', right: '10px'}} onClick={closeDialog}/>
       </div>
     </Dialog>
   );

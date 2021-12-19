@@ -72,3 +72,13 @@ a, button{
 .nes-btn.is-small {
 	padding: 2px 3px;
 }
+
+.nes-checkbox {
+	cursor: pointer;
+}
+.nes-checkbox+span {
+	cursor: pointer !important;
+}
+.checkbox-label {
+	cursor: pointer !important;
+}

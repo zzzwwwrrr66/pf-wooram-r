@@ -18,12 +18,12 @@ ul.pagination li {
 ul.pagination li a {
   color: #000;
 }
-ul.pagination li:nth-child(2) {
+/* ul.pagination li:nth-child(2) {
   margin-right: 8px;
 }
 ul.pagination li:nth-child(6) {
   margin-left: 8px;
-}
+} */
 
 ul.pagination li.active {
   background-color: #33bdb2;

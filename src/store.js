@@ -62,6 +62,9 @@ const mainStore = createSlice({
       state.projectStatus.detailIsOpen = false;
       state.projectStatus.detailId = null
     },
+    actionGuestBookChangePage: (state, action) => {
+      state.guestBookStatus.currentPage = action.payload;
+    },
   }
 });
 const projectStore = createSlice({
@@ -85,7 +88,8 @@ export const {
   actionProjectDeleteLabel,
   actionProjectChangeYear,
   actionProjectDetailOpen,
-  actionProjectDetailClose
+  actionProjectDetailClose,
+  actionGuestBookChangePage
 } = mainStore.actions;
 
 export default store;

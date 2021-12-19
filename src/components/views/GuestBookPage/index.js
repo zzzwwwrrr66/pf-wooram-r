@@ -11,28 +11,24 @@ import {
   onSnapshot,
   query,
   orderBy,
+  limit
   } from "firebase/firestore";
 
-import CommentList from './CommentList';
+import {actionGuestBookChangePage} from '../../../store';
 
-const List = styled('ul')({
-  listStyle: 'none',
-  padding: 1,
-  margin: 0,
-  display: 'flex',
-});
+import CommentList from './CommentList';
+import Paging from '../../Paging';
+
 
 function GuestBook({state}) {
   const [listLoading, setListLoading] = useState(false);
   const [commentList, setCommentList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentCommentList, setCurrentCommentList] = useState([]);
   const [listCount, setListCount] = useState(null);
-  const { items } = usePagination({
-    count: 5,
-  });
-
+ 
   useEffect(() => {
-    const q = query(collection(dbService, 'guest_book'), orderBy("createAt", "desc"));
+    console.log('guest book paging ',state.guestBookStatus.currentPage)
+    const q = query(collection(dbService, 'guest_book'), orderBy("createAt", "desc"),)
     const unsub = onSnapshot(q, snapshot => {
       setListLoading(true);
 
@@ -43,15 +39,29 @@ function GuestBook({state}) {
           }
         )
       );
-      console.log(itemsArr)
       setCommentList(itemsArr);
       setListLoading(false);
       setListCount(itemsArr.length);
+      setCurrentCommentList(pagingItems(itemsArr));
       return ()=> {
         unsub();
       }
     });
   }, []);
+
+  useEffect(()=>{
+    setCurrentCommentList(pagingItems(commentList));
+  }, [state.guestBookStatus.currentPage]);
+
+  const pagingItems = (itemArr) => {
+    const result = [];
+    let startNum = ((state.guestBookStatus.currentPage - 1) * 5 + 1) - 1;
+    let lastNum = state.guestBookStatus.currentPage * 5;
+    for(let i = startNum; i < lastNum; i++) {
+      if(itemArr[i]) result.push(itemArr[i])
+    }
+    return result;
+  }
 
   return(
     <>
@@ -70,12 +80,11 @@ function GuestBook({state}) {
         }}
       >
       <GuestBookForm  />
-      
-        <h3 className="title">Guest Book List</h3>
         <section className="message-list">
+        <h3 className="title">Guest Book List</h3>
         {
-          commentList.length
-          ? commentList.map(itemObj=> {
+          currentCommentList.length > 0
+          ? currentCommentList.map(itemObj=> {
             return((
               <CommentList key={itemObj.commentId} itemObj={itemObj} isMine={
                 itemObj.userId && state.userInfo
@@ -84,46 +93,13 @@ function GuestBook({state}) {
               } />
             ))
           })
-          : <div style={{display:'flex', justifyContent: 'center'}}><CircularProgress/></div>
+          : <div style={{display:'flex', justifyContent: 'center'}}>
+            <CircularProgress/>
+            </div>
         }
       </section>
-      
 
-        <nav style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
-        <List>
-          {items.map(({ page, type, selected, ...item }, index) => {
-            let children = null;
-
-            if (type === 'start-ellipsis' || type === 'end-ellipsis') {
-              children = '…';
-            } else if (type === 'page') {
-              children = (
-                <button
-                  type="button"
-                  style={{
-                    fontWeight: selected ? 'bold' : undefined, padding: '2px', margin:'0 5px'
-                  }}
-                  {...item}
-                >
-                  {page}
-                </button>
-              );
-            } else {
-              children = (
-                <button type="button" {...item} style={{padding: '2px', margin:'0 10px'}}>
-                  {
-                  type == 'next'
-                  ? `>`
-                  : `<`
-                  }
-                </button>
-              );
-            }
-
-            return <li key={index}>{children}</li>;
-          })}
-        </List>
-      </nav>
+      <Paging actionChangePageNum={actionGuestBookChangePage && actionGuestBookChangePage} itemsCount={5} itemsAllCount={listCount && listCount} />
     </div>
     </div>
     
