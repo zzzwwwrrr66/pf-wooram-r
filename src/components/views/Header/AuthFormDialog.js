@@ -67,6 +67,14 @@ function AuthFormDialog({theme, open, headerDispatch}){
     headerDispatch({
       type: 'SET_CLOSE_DIALOG'
     });
+    setErrMessage('');
+    setValues({
+      email: '',
+      password: '',
+      showPassword: false,
+    });
+    setLoginBtnIsActive(false);
+    setCreateBtnIsActive(true);
   };
 
   const handleClickShowPassword = () => {
@@ -200,11 +208,11 @@ function AuthFormDialog({theme, open, headerDispatch}){
         
     </Box>
     <div style={{marginBottom: '16px'}}>
-      <button type="button" class="nes-btn is-main" name="google" onClick={clickSocialSignIn} style={{display:'flex', width: '100%', marginBottom: '15px', justifyContent: 'center'}}>
+      <button type="button" className="nes-btn is-main" name="google" onClick={clickSocialSignIn} style={{display:'flex', width: '100%', marginBottom: '15px', justifyContent: 'center'}}>
         <span>Sign Up Google</span>
         <GoogleIcon sx={{ml: 1}}/>
       </button>
-      <button type="button" class="nes-btn is-main" name="github" onClick={clickSocialSignIn} style={{display:'flex',width: '100%', justifyContent: 'center'}}>
+      <button type="button" className="nes-btn is-main" name="github" onClick={clickSocialSignIn} style={{display:'flex',width: '100%', justifyContent: 'center'}}>
         <span>Sign Up github</span>
         <GitHubIcon sx={{ml: 1}}/>
       </button>
