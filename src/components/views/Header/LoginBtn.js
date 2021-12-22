@@ -13,6 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import CircularProgress from '@mui/material/CircularProgress';
 import { authService } from '../../../firebase';
 
+import './Header.css'
+
 
 const LoginBtn = ({state}) => {
   // console.log('in loginBtn',props.isLogin)
@@ -42,11 +44,11 @@ const LoginBtn = ({state}) => {
             state.userInfo && state.userInfo.userImg 
             ? <Avatar alt="Remy Sharp" src={state.userInfo.userImg} sx={{objectFit:'initial'}}/>
             : <Avatar />
-            : <CircularProgress />
+            : <CircularProgress style={{color:'#fff'}}/>
           }
         </IconButton>
         <Menu
-          sx={{ mt: '45px' }}
+          sx={{ mt: '45px',  p: 2 }}
           id="menu-appbar"
           anchorEl={isUserMenuOpen}
           anchorOrigin={{
@@ -60,15 +62,31 @@ const LoginBtn = ({state}) => {
           }}
           open={Boolean(isUserMenuOpen)}
           onClose={handleCloseUserMenu}
+          style={{padding: '10px'}}
         >
-          <MenuItem onClick={handleCloseUserMenu}>
+          <li style={{textAlign: 'center',margin:'0 0 10px' }}>
+            <Link to={`/edit-profile`} onClick={handleCloseUserMenu} 
+            style={{display: 'block',padding: '5px', color: '#33bdb2'}}>
+              <span className="nes-text">Profile</span>
+            </Link>
+          </li>
+          <li style={{textAlign: 'center'}}>
+            <p 
+              onClick={handleLogOut} 
+              style={{display: 'block',margin: '0',padding: '5px', color: '#33bdb2', cursor:'pointer'}}
+              className='link'
+            >
+              <span className="nes-text">Logout</span>
+            </p>
+          </li>
+          {/* <MenuItem onClick={handleCloseUserMenu}>
             <Link to={`/edit-profile`} >
               <Typography textAlign="center">Profile</Typography>
             </Link>
           </MenuItem>
           <MenuItem onClick={handleLogOut}>
             <Typography textAlign="center">Logout</Typography>
-          </MenuItem>
+          </MenuItem> */}
           
         </Menu>
       </Box>

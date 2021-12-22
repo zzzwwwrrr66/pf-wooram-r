@@ -42,7 +42,8 @@ function UserGuestBook({state, dispatch}) {
               <UserGuestBookList key={i} itemObj={itemObj} />
             ))
           })
-          : <div style={{display:'flex', justifyContent: 'center'}}><CircularProgress/></div>
+          : <div><p>アイテムがありません</p></div>
+          // : <div style={{display:'flex', justifyContent: 'center'}}><CircularProgress/></div>
         }
       </section>
     </>

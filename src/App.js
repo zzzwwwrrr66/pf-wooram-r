@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route, Link, Redirect } from 'react-route
 import { connect } from 'react-redux';
 import { actionIsLogin, actionUserInfo, actionUserInit } from './store'
 import './default.css'
-import Home from './components/views/Home'
+import Home from './components/views/Home/index'
 import EditProfile from './components/views/EditProfilePage';
 import GuestBook from './components/views/GuestBookPage/index';
 import Contact from './components/views/ContactPage/index';

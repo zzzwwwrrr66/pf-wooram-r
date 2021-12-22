@@ -82,7 +82,7 @@ function Header({state}) {
               Loginasd
             </Button> */}
             </>
-            : <CircularProgress />
+            : <CircularProgress style={{color: '#fff'}}/>
           }
         </Toolbar>
       </Container>

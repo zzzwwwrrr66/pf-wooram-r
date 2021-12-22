@@ -97,7 +97,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
                   }
                 </div>
                 <div style={{marginTop: '10px'}}>
-                  <button type="button" className="nes-btn is-small is-main btn" onClick={()=>openDialog(v.index)}>learn more</button>
+                  <button type="button" className="nes-btn is-small is-main btn" onClick={()=>openDialog(v.index)}>read more</button>
                 </div>
               </div>
               {

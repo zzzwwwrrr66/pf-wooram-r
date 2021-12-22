@@ -17,6 +17,7 @@ function GuestBookForm({state}) {
   const [val, setVal] = useState('');
   const [isLogined, setIsLogined] = useState(false);
   const [fileInfo, setFileInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
   const inputFileRef = useRef(null);
 
   useEffect(() => {

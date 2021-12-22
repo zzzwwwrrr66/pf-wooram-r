@@ -31,12 +31,12 @@ function ItemDetailDialog({closeDialog, state, }) {
         {
           currentItem&&
           <>
-            <p style={{fontSize: '20px'}}>{currentItem.title}</p>
+            <p style={{fontSize: '20px', fontWeight: 'bold'}}>{currentItem.title}</p>
             <p>{currentItem.kinds}</p>
             <div style={{textAlign:'left'}}>
               {
                 currentItem.page_url &&
-                <a href={currentItem.page_url} target='_blank' rel="noopener" style={{margin:'0 5px 0', color: '#33bdb2'}} >Move PC Page</a>
+                <a href={currentItem.page_url} target='_blank' rel="noopener" style={{margin:'0 5px 0', color: '#33bdb2'}} >Move Page</a>
               }
               {
                 currentItem.page_url_02 &&

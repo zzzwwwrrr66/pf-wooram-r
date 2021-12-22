@@ -94,7 +94,7 @@ function GuestBook({state}) {
             ))
           })
           : <div style={{display:'flex', justifyContent: 'center'}}>
-            <CircularProgress/>
+            <CircularProgress style={{color:'#33bdb2'}} />
             </div>
         }
       </section>

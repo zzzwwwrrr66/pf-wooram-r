@@ -1,20 +1,9 @@
 import { useState } from 'react'
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
+import {CircularProgress, Box} from '@mui/material/';
 import { authService } from '../../../firebase';
 
 function errorMessageFnc(msg) {
@@ -50,6 +39,10 @@ function AuthFormDialog({theme, open, headerDispatch}){
 
   const [loginBtnIsActive, setLoginBtnIsActive] = useState(false);
   const [createBtnIsActive, setCreateBtnIsActive] = useState(true);
+  const [createLoading, setCreateLoading] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [googleLoginLoading, setGoogleLoginLoading] = useState(false);
+  const [githubLoginLoading, setGithubLoginLoading] = useState(false);
 
   const init = () => {
       handleCloseIsOpen();
@@ -82,8 +75,8 @@ function AuthFormDialog({theme, open, headerDispatch}){
       ...values,
       showPassword: !values.showPassword,
     });
-    
   };
+  
   const handleChange = (inputType) => (e) => {
     setValues({ ...values, [inputType]: e.target.value });
   };
@@ -95,14 +88,18 @@ function AuthFormDialog({theme, open, headerDispatch}){
       setErrMessage('');
       return
     };
+
+    setCreateLoading(true);
     authService.createUserWithEmailAndPassword(authService.getAuth(), values.email, values.password)
     .then(res=>{ 
-      console.log(res);
+      // after create success
+      setCreateLoading(false);
       init();
       alert('Create Success!');
     })
     .catch( (err, a) =>{
-      setErrMessage(errorMessageFnc(err.message))
+      setErrMessage(errorMessageFnc(err.message));
+      setCreateLoading(false);
     });
   }
 
@@ -113,15 +110,17 @@ function AuthFormDialog({theme, open, headerDispatch}){
       setErrMessage('');
       return
     };
+    setLoginLoading(true);
     authService.signInWithEmailAndPassword(authService.getAuth(), values.email, values.password)
     .then(res=>{ 
-      // 다이어로그 모달 성공했습니다
-      console.log(res);
+      // after create Login
+      setLoginLoading(false);
       init();
       alert('Login! Success');
     })
     .catch( (err, a) =>{
       console.log(err.message);
+      setLoginLoading(false);
       setErrMessage(errorMessageFnc(err.message))
       
     });
@@ -132,22 +131,30 @@ function AuthFormDialog({theme, open, headerDispatch}){
     let provider;
     if(socialName === 'google') {
       provider = new authService.GoogleAuthProvider();
+      setGoogleLoginLoading(true);
     } else if(socialName === 'github') {
       provider = new authService.GithubAuthProvider();
+      setGithubLoginLoading(true);
     } else {
       return;
     }
+
     const auth = authService.getAuth();
     auth.languageCode = 'ja';
     authService.signInWithPopup(auth, provider)
     .then((res) => {
       console.log(res);
+      setGoogleLoginLoading(false);
+      setGithubLoginLoading(false);
       init();
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
       console.log(error);
+      // setErrMessage(error);
+      setGoogleLoginLoading(false);
+      setGithubLoginLoading(false);
     });
   }
 
@@ -195,7 +202,13 @@ function AuthFormDialog({theme, open, headerDispatch}){
           className={loginBtnIsActive ? 'nes-btn is-disabled' : 'nes-btn'}
           onClick={handleSignIn} 
           style={{width: '100%', marginTop:'10px', marginBottom: '10px'}}
-        >Sign In</button>
+        >
+          {
+            loginLoading
+            ? <CircularProgress size={20} style={{color:'#33bdb2'}} />
+            : 'Sign In'
+          }
+        </button>
       </div>
       <div>
         <button 
@@ -203,18 +216,38 @@ function AuthFormDialog({theme, open, headerDispatch}){
           className={createBtnIsActive ? 'nes-btn is-disabled' : 'nes-btn'}
           onClick={clickCreateUser} 
           style={{width: '100%'}}
-        >create new account</button>
+        >
+          {
+            createLoading
+            ? <CircularProgress size={20} style={{color:'#33bdb2'}} />
+            : 'create new account'
+          }
+        </button>
       </div>
         
     </Box>
     <div style={{marginBottom: '16px'}}>
       <button type="button" className="nes-btn is-main" name="google" onClick={clickSocialSignIn} style={{display:'flex', width: '100%', marginBottom: '15px', justifyContent: 'center'}}>
+      {
+        googleLoginLoading
+        ? <CircularProgress size={20} style={{color:'#fff'}} />
+        : <>
         <span>Sign Up Google</span>
         <GoogleIcon sx={{ml: 1}}/>
+        </>
+      }
+        
       </button>
       <button type="button" className="nes-btn is-main" name="github" onClick={clickSocialSignIn} style={{display:'flex',width: '100%', justifyContent: 'center'}}>
+      {
+        githubLoginLoading
+        ? <CircularProgress size={20} style={{color:'#fff'}} />
+        : <>
         <span>Sign Up github</span>
         <GitHubIcon sx={{ml: 1}}/>
+        </>
+      }
+        
       </button>
     </div> 
     </Container>
