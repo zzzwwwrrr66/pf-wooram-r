@@ -1,29 +1,29 @@
-// import { useState } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from 'react';
+
+import SendEmailForm from './SendEmailForm';
 
 function Contact() {
-  // const theme = createTheme({
-  //   palette: {
-  //     primary: {
-  //       light: '#5bcac1',
-  //       main: '#33bdb2',
-  //       dark: '#23847c',
-  //       contrastText: '#fff',
-  //     },
-  //     secondary: {
-  //       light: '#5bcac1',
-  //       main: '#33bdb2',
-  //       dark: '#23847c',
-  //       contrastText: '#000',
-  //     },
-  //   },
-  // });
+ 
   return(
-    <>
-    <h1>
-    Contact Page
-    </h1>
-    </>
+    <div style={{padding: "0 10px 0"}}>
+      <div 
+        className="nes-container with-title" 
+        style={{
+          position: "relative", 
+          width:"100%", 
+          maxWidth:"860px", 
+          margin: "30px auto 0",
+          padding:'1.5rem 1rem', 
+          marginTop: "30px",
+          marginBottom: '30px', 
+          boxSizing:"border-box" 
+        }}>
+        <h3 className="title">Contact Me</h3>
+        <SendEmailForm />
+
+      </div>
+    </div>
+    
   )
 }
 

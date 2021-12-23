@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
-
+import AboutMe from './AboutMe';
+import MySkills from './MySkills';
 
 const getData = async () => {
   
@@ -13,9 +14,8 @@ function Home() {
   
   return(
     <>
-    <h1>
-    Home 
-    </h1>
+    <AboutMe />
+    <MySkills />
     </>
   )
 }
