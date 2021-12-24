@@ -31,11 +31,11 @@ function AboutMe () {
               <p>comment: コツコツ、繰り返すより新しい冒険</p>
               <p style={{marginBottom: '0'}}>attitude at work: </p>
               <ul class="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
-                <li>ひとまずやってみるのが好きです</li>
-                <li>担当したことは最後まですることを心掛けています</li>
-                <li>経験したことないことに興味を持ってコードに映してみます</li>
-                <li>自分が作成したページの仕組みなど、文章で分かりやすく作成したことがあります</li>
-                <li>新しく知ったり、気付くことが好きです</li>
+                <li>ひとまずやってみるのが好き</li>
+                <li>担当したことは最後まですることを心掛けている</li>
+                <li>経験したことないことに興味を持ってコードに映してみる</li>
+                <li>自分が作成したページの仕組みなど、文章で分かりやすく作成した経験あり</li>
+                <li>新しく知ったり、気付くことが好き</li>
               </ul>
               <div className="about-me-ico-wrap">
                 <a href='https://github.com/zzzwwwrrr66' target='_blank' rel="noopener">
