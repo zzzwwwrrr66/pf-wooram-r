@@ -23,7 +23,7 @@ function handleColor(skillName) {
       return '#61DBFB'
     case 'Redux': 
       return '#764abc';
-    case 'Vue': 
+    case 'Vue2': 
       return '#41b883';
     case 'Vuex': 
       return '#41b883';
@@ -52,7 +52,7 @@ function MySkills () {
     Jquery: 90,
     React: 70,
     Redux: 70,
-    Vue: 65,
+    Vue2: 65,
     Vuex: 70,
     Typescript: 25,
     Firebase: 60,

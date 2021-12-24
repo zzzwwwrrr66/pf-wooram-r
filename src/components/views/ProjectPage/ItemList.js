@@ -85,7 +85,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
           (
             <li key={i} className='list-wrap' >
               <div style={{marginRight: '10px'}}>
-                <p>{v.add_year}作 【{v.kinds}】</p>
+                <p>{v.add_year}年作 【{v.kinds}】</p>
                 <p style={{fontWeight: 'bold'}}>{v.title}</p>
                 <div className='badge-wrap'>
                   {

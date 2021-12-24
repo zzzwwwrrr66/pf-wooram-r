@@ -3,8 +3,8 @@ export default [
   {
       "index": 33,
       "add_year" : "2021",
-      "title" : "ポートフォロー",
-      "kinds" : "ポートフォロー制作",
+      "title" : "ポートフォリオ",
+      "kinds" : "ポートフォリオ制作",
       "page_url" : "https://pf-wooram.web.app/",
       "page_url_02" : "",
       "info_01" : "1. vuexを使用し、全体STATE管理,2. vueのcssフレームワーク(vuetify)を使用し、綺麗なUI制作,3. firebaseを使用し、リアルタイムデータをコントロールして動的なページ作成,4. node環境での全体的なプロセスを使い、ライブラリなど必要な技術を的確なところに使用,5. vueの作成方法を理解し、SPAページ作成に合わせて制作,5. 必要なデータ(projectの所)を1から書き、自分の作成に合わせて制作",
@@ -17,7 +17,7 @@ export default [
   {
       "index": 1,
       "add_year" : "2020",
-      "title" : "d払いリニューアル ネット&街",
+      "title" : "ｄ払いリニューアル ネット＆街",
       "kinds" : "ページリニューアル",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/app/shop/",
       "page_url_02" : "",
@@ -103,7 +103,7 @@ export default [
   {
       "index": 7,
       "add_year" : "2020",
-      "title" : "【SPS】イントラサイト改修およびエクストラサイト制作",
+      "title" : "【ＳＰＳ】イントラサイト改修およびエクストラサイト制作",
       "kinds" : "PAGE制作",
       "page_url" : "",
       "page_url_02" : "https://mobile.suntory.co.jp/beer/pre-mal/mastersdream/yamazaki/blend/index.html",
@@ -131,7 +131,7 @@ export default [
   {
       "index": 9,
       "add_year" : "2021",
-      "title" : "全日食CP",
+      "title" : "全日食ＣＰ",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/campaign/dpay_znsp/2103/cpn_20.html",
       "page_url_02" : "",
@@ -145,7 +145,7 @@ export default [
   {
       "index": 10,
       "add_year" : "2021",
-      "title" : "「プリンツ ベア」ブランドサイトRN",
+      "title" : "「プリンツベア」ブランドサイトＲＮ",
       "kinds" : "ページ制作",
       "page_url" : "https://duskinduet.digitalmarketing.jp/ohbo/air_cp03.html",
       "page_url_02" : "",
@@ -173,7 +173,7 @@ export default [
   {
     "index": 32,
     "add_year" : "2021",
-    "title" : "TOYOTA ファイナンス・旅行サイト ",
+    "title" : "ＴＯＹＯＴＡ ファイナンス・旅行サイト ",
     "kinds" : "量産ページ制作",
     "page_url" : "",
     "page_url_02" : "",
@@ -187,7 +187,7 @@ export default [
   {
     "index": 31,
     "add_year" : "2021",
-    "title" : "MOSサスティナビリティ",
+    "title" : "ＭＯＳサスティナビリティ",
     "kinds" : "javascript修正",
     "page_url" : "",
     "page_url_02" : "",
@@ -201,7 +201,7 @@ export default [
   {
     "index": 30,
     "add_year" : "2021",
-    "title" : "MOS社会貢献活動コーディング",
+    "title" : "ＭＯＳ社会貢献活動コーディング",
     "kinds" : "量産ページ制作",
     "page_url" : "",
     "page_url_02" : "",
@@ -215,7 +215,7 @@ export default [
   {
     "index": 29,
     "add_year" : "2021",
-    "title" : "【SST】WFH2021",
+    "title" : "【ＳＳＴ】ＷＦＨ２０２１",
     "kinds" : "ページ制作",
     "page_url" : "https://www.suntory.co.jp/suntoryhall/feature/wphweek2021/index.html",
     "page_url_02" : "",
@@ -229,7 +229,7 @@ export default [
   {
       "index": 28,
       "add_year" : "2021",
-      "title" : "ANAオリジナル おせち特集2022CP",
+      "title" : "ＡＮＡオリジナル おせち特集２０２２ＣＰ",
       "kinds" : "LP制作",
       "page_url" : "",
       "page_url_02" : "",
@@ -244,7 +244,7 @@ export default [
   {
       "index": 12,
       "add_year" : "2021",
-      "title" : "dポイント山分けCP",
+      "title" : "ｄポイント山分けＣＰ",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/campaign/dpay_yamawake/2106/",
       "page_url_02" : "",
@@ -258,7 +258,7 @@ export default [
   {
       "index": 13,
       "add_year" : "2021",
-      "title" : "とくトクd払い20％還元CP",
+      "title" : "とくトクｄ払い２０％還元ＣＰ",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/campaign/dpay_tokutoku/2102/cpn_20.html",
       "page_url_02" : "",
@@ -272,7 +272,7 @@ export default [
   {
       "index": 14,
       "add_year" : "2021",
-      "title" : "HOYA 7月CP(半額 & 30%OFF)",
+      "title" : "ＨＯＹＡ７月ＣＰ（半額＆３０％ＯＦＦ）",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/campaign/dpay_tokutoku/2102/cpn_20.html",
       "page_url_02" : "",
@@ -286,7 +286,7 @@ export default [
   {
       "index": 15,
       "add_year" : "2020",
-      "title" : "【KBI】調理機器カタログ対応（2020秋）_調理機器 ",
+      "title" : "【ＫＢＩ】調理機器カタログ対応（２０２０秋）＿調理機器 ",
       "kinds" : "ページ制作",
       "page_url" : "https://home.osakagas.co.jp/search_buy/gascooker/merit/merit05.html",
       "page_url_02" : "https://home.osakagas.co.jp/sp/search_buy/gascooker/merit/merit05.html",
@@ -314,7 +314,7 @@ export default [
   {
       "index": 17,
       "add_year" : "2021",
-      "title" : "dフォト_注文キャンペーン_コーディング",
+      "title" : "ｄフォト 注文キャンペーン コーディング",
       "kinds" : "LP制作",
       "page_url" : "",
       "page_url_02" : "",
@@ -328,7 +328,7 @@ export default [
   {
       "index": 18,
       "add_year" : "2021",
-      "title" : "duskin SYNERGY & 応募ページ",
+      "title" : "ｄｕｓｋｉｎ ＳＹＮＥＲＹ＆応募ページ",
       "kinds" : "LP制作",
       "page_url" : "",
       "page_url_02" : "",
@@ -342,7 +342,7 @@ export default [
   {
       "index": 19,
       "add_year" : "2020",
-      "title" : "d払い(eKYCヘルプサイト新規制作)",
+      "title" : "ｄ払い（ｅＫＹＣヘルプサイト新規制作）",
       "kinds" : "ページ制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/guide/app_ekyc_auth.html",
       "page_url_02" : "",
@@ -356,7 +356,7 @@ export default [
   {
       "index": 20,
       "add_year" : "2021",
-      "title" : "【GROWING】SP版のフォント拡大対応",
+      "title" : "【ＧＲＯＷＩＮＧ】ＳＰ版のフォント拡大対応",
       "kinds" : "CSS修正",
       "page_url" : "",
       "page_url_02" : "",
@@ -370,7 +370,7 @@ export default [
   {
       "index": 21,
       "add_year" : "2020",
-      "title" : "d払い(ローソン d払い+20%還元キャンペーン（d払い配下LP）",
+      "title" : "ｄ払い（ローソンｄ払い＋２０％還元キャンペーン（ｄ払い配下ＬＰ）",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/corporation/shop.html",
       "page_url_02" : "",
@@ -384,7 +384,7 @@ export default [
   {
       "index": 22,
       "add_year" : "2020",
-      "title" : "docomo(mydaiz_新感覚ナビキャンペーン)",
+      "title" : "ｄｏｃｏｍｏ（ｍｙｄａｉｚ＿新感覚ナビキャンペーン）",
       "kinds" : "LP制作",
       "page_url" : "",
       "page_url_02" : "",
@@ -398,7 +398,7 @@ export default [
   {
       "index": 23,
       "add_year" : "2021",
-      "title" : "d払いをはじめよう！＋50％還元キャンペーン",
+      "title" : "ｄ払いをはじめよう！＋５０％還元キャンペーン",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/campaign/dpay_sb/cpn_dpay_sb.html",
       "page_url_02" : "",
@@ -412,7 +412,7 @@ export default [
   {
       "index": 24,
       "add_year" : "2021",
-      "title" : "【ピジョン株式会社】商品一覧 & 詳細ページのテンプレート改修",
+      "title" : "【ピジョン株式会社】商品一覧＆詳細ページのテンプレート改修",
       "kinds" : "ページ修正",
       "page_url" : "https://shop.pigeon.co.jp/category/SEARCH103/",
       "page_url_02" : "",
@@ -426,7 +426,7 @@ export default [
   {
       "index": 25,
       "add_year" : "2020",
-      "title" : "SST(CMG（チェンバーミュージック・ガーデン）2020年英語版　ページ修正)",
+      "title" : "ＳＳＴ（ＣＭＧ（チェンバーミュージック・ガーデン）２０２０年英語版ページ修正）",
       "kinds" : "ページ修正",
       "page_url" : "https://www.suntory.com/culture-sports/suntoryhall/feature/chamber2020/index.html",
       "page_url_02" : "",
@@ -440,7 +440,7 @@ export default [
   {
       "index": 26,
       "add_year" : "2020",
-      "title" : "d払いクーポンキャンペーン",
+      "title" : "ｄ払いクーポンキャンペーン",
       "kinds" : "LP制作",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/campaign/dpay_coupon/index.html",
       "info_01" : "1. レスポンシブ,2. アコディアンメニュー,",
@@ -453,7 +453,7 @@ export default [
   {
       "index": 27,
       "add_year" : "2020",
-      "title" : "d払いサイト 運用",
+      "title" : "ｄ払いサイト 運用",
       "kinds" : "ページ運用",
       "page_url" : "https://service.smt.docomo.ne.jp/keitai_payment/",
       "info_01" : "1. リアルタイムで更新をするページの運用,2. サイトの運用管理による数あるページ管理及び更新,3. サコンポーネントページの作成、テスト環境検証、商用環境へアップデートまでのプロセスを全部経験,4. ページ運用管理による様々な注意点を習得,",

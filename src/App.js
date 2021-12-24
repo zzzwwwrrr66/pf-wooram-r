@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { HashRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionIsLogin, actionUserInfo, actionUserInit } from './store'
@@ -13,6 +13,13 @@ import Header from './components/views/Header';
 import { authService } from './firebase';
 
 function App({state, dispatch}) {
+  const [start, setStart] = useState(true);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setStart(false);
+      console.log('start');
+    }, 1200)
+  },[]);
 
   useEffect(()=> {
     authService.onAuthStateChanged(authService.getAuth(), async (user) =>  {
@@ -36,27 +43,39 @@ function App({state, dispatch}) {
       }
       dispatch(actionUserInit(true));
     });
-  },[])
+  },[]);
 
   
   return (
     <>
-      <Header moveLinkTag={Link}/>
-      <Router>
-        <Switch>
-          <Route path="/" component={ Home } exact={true} />
-          <Route path="/guest-book" component={ GuestBook } exact={true} />
-          <Route path="/contact" component={ Contact } exact={true} />
-          <Route path="/project" component={ Project } exact={true} />
-          <Route exact path="/edit-profile">
-            { 
-              state.userInit 
-              ? state.isLogin ? <EditProfile /> : <Redirect to="/" />
-              : null
-            }
-          </Route>
-        </Switch>
-      </Router>
+    {
+    start
+    ? <div style={{position: 'absolute', top:'0', left: '0',width: '100vw', height: '100vh'}}>
+      <img alt='' 
+      src={require('./components/images/loading.gif').default} 
+      style={{position: 'absolute', left:'50%', top:'50%', transform:'translate(-50%, -50%)', maxWidth:'1200px', width: '100%', height: '100%', objectFit: 'contain'}} 
+      />
+    </div>
+    : <>
+    <Header moveLinkTag={Link}/>
+    <Router>
+      <Switch>
+        <Route path="/" component={ Home } exact={true} />
+        <Route path="/guest-book" component={ GuestBook } exact={true} />
+        <Route path="/contact" component={ Contact } exact={true} />
+        <Route path="/project" component={ Project } exact={true} />
+        <Route exact path="/edit-profile">
+          { 
+            state.userInit 
+            ? state.isLogin ? <EditProfile /> : <Redirect to="/" />
+            : null
+          }
+        </Route>
+      </Switch>
+    </Router>
+    </>
+    }
+      
     </>
   );
 }
