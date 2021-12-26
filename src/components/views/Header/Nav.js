@@ -20,16 +20,16 @@ const Nav = (props, {moveLinkTag}) => {
 
   return(
     <Router>
-    <Link to="/">
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-              <img src={logoImg} alt='logo' style={{maxWidth: '120px', objectFit:'contain'}} />
-          </Typography>
-          </Link>
+      <Link to="/">
+        <Typography
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+        >
+        <img src={logoImg} alt='logo' style={{maxWidth: '120px', objectFit:'contain'}} />
+        </Typography>
+      </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
