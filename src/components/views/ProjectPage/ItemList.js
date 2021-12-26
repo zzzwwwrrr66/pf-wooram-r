@@ -9,7 +9,6 @@ import './css/ItemList.css'
 
 
 const ItemList = ({state, dispatch, openDialog}) => {
-  console.log(actionProjectSetCurrentData);
   const [allItems, setAllItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(state.projectStatus.currentPage);
@@ -17,7 +16,6 @@ const ItemList = ({state, dispatch, openDialog}) => {
   
   // currentPage
   useEffect(() => {
-    console.log(state.projectStatus.data);
     setAllItems(prev=>[...prev, ...state.projectStatus.data]);
   }, []);
   
@@ -33,7 +31,6 @@ const ItemList = ({state, dispatch, openDialog}) => {
     let sortData = [];
     let currentData = state.projectStatus.data
     let currentSortData = [];
-    console.log(initData);
 
     if(state.projectStatus.currentYear === 'all' && !state.projectStatus.currentLabel.length) {
       setCurrentItems(initData);
