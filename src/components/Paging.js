@@ -17,6 +17,7 @@ const Paging = ({state, dispatch, actionChangePageNum, itemsCount, itemsAllCount
   const [page, setPage] = useState(1);
 
   const handlePageChange = (pageNum) => {
+    if(pageNum === page) return;
     setPage(pageNum);
     dispatch(actionChangePageNum(pageNum));
   };

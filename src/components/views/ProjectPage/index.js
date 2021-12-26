@@ -7,6 +7,7 @@ import {actionProjectChangePage} from '../../../store';
 import SortLabel from './SortLabel';
 import ItemList from './ItemList';
 import SortYear from './SortYear'
+import ProjectSummaryDialog from './ProjectSummaryDialog'
 
 function Project() {
 
@@ -17,6 +18,7 @@ function Project() {
   return(
     <>
     <div style={{padding: "0 10px 0"}}>
+    
       <div 
         className="nes-container with-title" 
         style={{
@@ -30,10 +32,14 @@ function Project() {
           boxSizing:"border-box" 
         }}>
         <h3 className="title">Project</h3>
+
+        
         <SortLabel />
         <SortYear />
         <ItemList />
         <Paging actionChangePageNum={actionProjectChangePage} itemsCount={10} itemsAllCount={ProjectData.length} />
+
+        <ProjectSummaryDialog />
       </div>
     </div>
     </>

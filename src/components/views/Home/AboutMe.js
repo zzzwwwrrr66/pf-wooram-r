@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import './css/MySkills.css'
+import './css/style.css'
 
 function AboutMe () {
   return (
@@ -27,7 +27,7 @@ function AboutMe () {
                 <li>ＷＥＢ勉強１年半（就職前）</li>
                 <li>トランス・コスモスコリア（ＷＥＢエンジニア２年）</li>
               </ul>
-              <p>Education: 韓国外国語通信大学（4年） 日本語学部</p>
+              <p>Education: 韓国外国語通信大学（４年） 日本語学部</p>
               <p>comment: コツコツ、繰り返すより新しい冒険</p>
               <p style={{marginBottom: '0'}}>attitude at work: </p>
               <ul class="nes-list is-disc" style={{margin:'0 1rem 10px'}}>

@@ -4,3 +4,9 @@ a:hover {
 .link:hover span {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+	.nes-btn:hover {
+		background-color: #fff !important;
+	}
+}

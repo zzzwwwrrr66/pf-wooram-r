@@ -1,0 +1,22 @@
+.project-summary-dialog-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  border: 4px solid #000;
+  box-sizing: border-box;
+  padding: 35px 10px 10px;
+  font-family: "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif
+}
+.link {
+  color: #33bdb2;
+  cursor: pointer;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .sp-margin0 {
+    margin: 0;
+  }
+}

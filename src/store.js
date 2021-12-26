@@ -15,6 +15,7 @@ const mainStore = createSlice({
       currentPage: 1,
       data : ProjectData,
       dataCount : ProjectData.length,
+      currentData: [],
       detailIsOpen: false,
       detailId: null,
     },
@@ -62,9 +63,13 @@ const mainStore = createSlice({
       state.projectStatus.detailIsOpen = false;
       state.projectStatus.detailId = null
     },
+    actionProjectSetCurrentData: (state, action) => {
+      state.projectStatus.currentData = action.payload;
+    },
     actionGuestBookChangePage: (state, action) => {
       state.guestBookStatus.currentPage = action.payload;
     },
+  
   }
 });
 const projectStore = createSlice({
@@ -89,7 +94,8 @@ export const {
   actionProjectChangeYear,
   actionProjectDetailOpen,
   actionProjectDetailClose,
-  actionGuestBookChangePage
+  actionProjectSetCurrentData,
+  actionGuestBookChangePage,
 } = mainStore.actions;
 
 export default store;

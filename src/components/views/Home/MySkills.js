@@ -7,7 +7,7 @@ import { easeQuadInOut } from "d3-ease";
 
 import 'react-circular-progressbar/dist/styles.css';
 
-import './css/MySkills.css';
+import './css/style.css';
 
 function handleColor(skillName) {
   switch (skillName) {

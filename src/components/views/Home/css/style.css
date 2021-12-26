@@ -1,47 +1,23 @@
 
-.section {
-  position: relative;
-  height: 100vh;
-}
-.tween {
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  margin: 0 !important;
-  position: relative;
-  left: calc(50% - 50px);
-}
-
-.stagger {
-  width: 50px;
-  height: 50px;
-  left: 700px;
-  background-color: green;
-  position: relative;
-}
-
-
-
+/* my skills items S */
 .items {
   display: flex;
   justify-content: center;
   width: calc(25% - 15px);
   margin: 20px 7.5px 0;
 }
-/* .items:nth-of-type(5n) {
-  margin-right: 0;
-} */
+/* my skills items E */
 .about-me-wrap {
   display: flex;
   justify-content: space-between;
 }
 
 @media screen and (max-width: 768px) {
+  /* my skills items S */
   .items {
     width: calc(33.333% - 15px);
   }
+  /* my skills items E */
   .about-me-wrap {
     flex-direction: column-reverse;
     justify-content: center;
@@ -55,7 +31,9 @@
   }
 }
 @media screen and (max-width: 600px) {
+  /* my skills items S */
   .items {
     width: calc(50% - 15px);
   }
+  /* my skills items E */
 }

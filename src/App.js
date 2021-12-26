@@ -58,21 +58,23 @@ function App({state, dispatch}) {
     </div>
     : <>
     <Header moveLinkTag={Link}/>
-    <Router>
-      <Switch>
-        <Route path="/" component={ Home } exact={true} />
-        <Route path="/guest-book" component={ GuestBook } exact={true} />
-        <Route path="/contact" component={ Contact } exact={true} />
-        <Route path="/project" component={ Project } exact={true} />
-        <Route exact path="/edit-profile">
-          { 
-            state.userInit 
-            ? state.isLogin ? <EditProfile /> : <Redirect to="/" />
-            : null
-          }
-        </Route>
-      </Switch>
-    </Router>
+    <div className={`main-wrap`} >
+      <Router>
+        <Switch>
+          <Route path="/" component={ Home } exact={true} />
+          <Route path="/guest-book" component={ GuestBook } exact={true} />
+          <Route path="/contact" component={ Contact } exact={true} />
+          <Route path="/project" component={ Project } exact={true} />
+          <Route exact path="/edit-profile">
+            { 
+              state.userInit 
+              ? state.isLogin ? <EditProfile /> : <Redirect to="/" />
+              : null
+            }
+          </Route>
+        </Switch>
+      </Router>
+    </div>
     </>
     }
       

@@ -63,7 +63,7 @@ function Header({state}) {
   };
 
   return (
-    <AppBar position="static" theme={theme}>
+    <AppBar position="fixed" theme={theme}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Nav />

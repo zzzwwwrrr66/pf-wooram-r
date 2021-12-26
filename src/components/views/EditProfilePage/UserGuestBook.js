@@ -7,8 +7,12 @@ import UserGuestBookList from './UserGuestBookList';
 
 import {CircularProgress, usePagination} from '@mui/material/';
 
+import {actionGuestBookChangePage} from '../../../store';
+import Paging from '../../Paging';
+
 function UserGuestBook({state, dispatch}) {
   const [userItems, setUserItems] = useState([]);
+  const [currentUserItems, setCurrentUserItems] = useState([]);
   const [listLoading, setListLoading] = useState(false);
 
   const getMyGuestBookList = async () => {
@@ -32,20 +36,35 @@ function UserGuestBook({state, dispatch}) {
     
   }, []);
 
+  useEffect(() => {
+    setCurrentUserItems(pagingItems(userItems));
+  }, [state.guestBookStatus.currentPage, userItems]);
+
+  const pagingItems = (itemArr) => {
+    const result = [];
+    let startNum = ((state.guestBookStatus.currentPage - 1) * 5 + 1) - 1;
+    let lastNum = state.guestBookStatus.currentPage * 5;
+    for(let i = startNum; i < lastNum; i++) {
+      if(itemArr[i]) result.push(itemArr[i])
+    }
+    return result;
+  }
+
   return(
     <>
       <section className="message-list">
         {
-          userItems.length
-          ? userItems.map((itemObj, i)=> {
+          currentUserItems.length
+          ? currentUserItems.map((itemObj, i)=> {
             return((
               <UserGuestBookList key={i} itemObj={itemObj} />
             ))
           })
           : <div><p>アイテムがありません</p></div>
-          // : <div style={{display:'flex', justifyContent: 'center'}}><CircularProgress/></div>
         }
       </section>
+
+      <Paging actionChangePageNum={actionGuestBookChangePage} itemsCount={5} itemsAllCount={userItems.length} />
     </>
   )
 }

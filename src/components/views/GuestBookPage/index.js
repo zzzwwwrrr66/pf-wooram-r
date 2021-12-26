@@ -72,9 +72,8 @@ function GuestBook({state}) {
           position: "relative", 
           width:"100%", 
           maxWidth:"860px", 
-          margin: "30px auto 0",
+          margin: "0 auto 0",
           padding:'1.5rem 1rem', 
-          marginTop: "30px",
           marginBottom: '30px', 
           boxSizing:"border-box" 
         }}

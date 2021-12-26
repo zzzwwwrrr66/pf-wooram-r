@@ -2,13 +2,14 @@ import React, { useState, useReducer, useEffect, memo } from "react";
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import {actionProjectDetailOpen, actionProjectDetailClose} from '../../../store';
+import {actionProjectDetailOpen, actionProjectDetailClose, actionProjectSetCurrentData } from '../../../store';
 import ItemDetailDialog from './ItemDetailDialog';
 
 import './css/ItemList.css'
 
 
 const ItemList = ({state, dispatch, openDialog}) => {
+  console.log(actionProjectSetCurrentData);
   const [allItems, setAllItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(state.projectStatus.currentPage);
@@ -23,12 +24,16 @@ const ItemList = ({state, dispatch, openDialog}) => {
   useEffect(() => {
     setCurrentItems(pagingItems(state.projectStatus.data));
     setCurrentCount(state.projectStatus.data.length);
+
   }, [state.projectStatus.currentPage]);
 
   // currentYear, currentLabel
   useEffect(() => {
     var initData = pagingItems(state.projectStatus.data);
     let sortData = [];
+    let currentData = state.projectStatus.data
+    let currentSortData = [];
+    console.log(initData);
 
     if(state.projectStatus.currentYear === 'all' && !state.projectStatus.currentLabel.length) {
       setCurrentItems(initData);
@@ -37,13 +42,13 @@ const ItemList = ({state, dispatch, openDialog}) => {
     }
 
     for(let i = 0; i < initData.length; i++) {
-      // label
+      // label sort
       if(state.projectStatus.currentLabel.length) {
         let diff = _.intersection(state.projectStatus.currentLabel, initData[i].tech);
         if(!diff.length) continue; 
       }
 
-      // year
+      // year sort
       if(state.projectStatus.currentYear !== 'all' && initData[i].add_year !== state.projectStatus.currentYear) continue;
       
       sortData.push(initData[i])
