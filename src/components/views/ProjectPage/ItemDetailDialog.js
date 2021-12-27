@@ -33,7 +33,7 @@ function ItemDetailDialog({closeDialog, state, }) {
     <Dialog onClose={closeDialog} open={state.projectStatus.detailIsOpen} maxWidth='md' sx={{margin:'10px'}} style={{margin:'10px'}}>
       <div 
         className={state.darkMod ? "nes-container with-title is-centered is-dark" : "nes-container with-title is-centered"}
-        style={{positon: 'relative' ,maxWidth: '900px', width: '100%'}}
+        style={{positon: 'relative' ,maxWidth: '900px', width: '100%', fontFamily: `"メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "MS PGothic", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`}}
       > 
         {
           currentItem&&

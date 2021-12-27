@@ -31,9 +31,9 @@ function AboutMe ({state}) {
               <p style={{marginBottom: '0'}}>attitude at work: </p>
               <ul className="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
                 <li>とりあえずやってみるのが好き</li>
-                <li>担当したことは最後まですることを心掛けている</li>
+                <li>担当したものは最後まで投げ出さないことを心掛けている</li>
                 <li>経験したことないことに興味を持ってコードに映してみる</li>
-                <li>自分が作成したページの仕組みなど、文章で分かりやすく作成した経験あり</li>
+                <li>自分が作成したページの仕組みなど、文章で分かりやすく資料化した経験あり</li>
                 <li>新しく知ったり、気付くことが好き</li>
               </ul>
               <div className="about-me-ico-wrap">
