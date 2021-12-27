@@ -1,21 +1,20 @@
-import {useState} from 'react';
-import './css/style.css'
+import {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 
-function AboutMe () {
+import './css/style.css';
+import styled from "styled-components";
+
+import { PfContainer, PfInner} from '../StyledComponents/index';
+
+function AboutMe ({state}) {
+
+  useEffect(()=>{
+    return;
+  }, [state.darkMod]);
+
   return (
-    <div style={{padding: "0 10px 0"}}>
-      <div 
-        className="nes-container with-title" 
-        style={{
-          position: "relative", 
-          width:"100%", 
-          maxWidth:"860px", 
-          margin: "30px auto 0",
-          padding:'1.5rem 1rem', 
-          marginTop: "30px",
-          marginBottom: '30px', 
-          boxSizing:"border-box" 
-        }}>
+    <PfContainer>
+      <PfInner className={state.darkMod ? `with-title nes-container is-dark` : `with-title nes-container`}>
         <h3 className="title">about me</h3>
         <div className='about-me-wrap' >
           <div>
@@ -23,14 +22,14 @@ function AboutMe () {
               <p>age: 30</p>
               <p>hobby: 読書、旅行、ゲーム、ＷＥＢ勉強</p>
               <p style={{marginBottom: '0'}}>career: </p>
-              <ul class="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
+              <ul className="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
                 <li>ＷＥＢ勉強１年半（就職前）</li>
                 <li>トランス・コスモスコリア（ＷＥＢエンジニア２年）</li>
               </ul>
               <p>Education: 韓国外国語通信大学（４年） 日本語学部</p>
               <p>comment: コツコツ、繰り返すより新しい冒険</p>
               <p style={{marginBottom: '0'}}>attitude at work: </p>
-              <ul class="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
+              <ul className="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
                 <li>とりあえずやってみるのが好き</li>
                 <li>担当したことは最後まですることを心掛けている</li>
                 <li>経験したことないことに興味を持ってコードに映してみる</li>
@@ -50,9 +49,16 @@ function AboutMe () {
             <img alt='me' src={require('./me.png').default} style={{width: '200px'}} />
           </div>
         </div>
-      </div>
-    </div>
+      </PfInner>
+    </PfContainer>
   )
 }
 
-export default AboutMe;
+
+
+function mapStateToProps(state){
+  return {state};
+}
+
+
+export default connect(mapStateToProps) (AboutMe);

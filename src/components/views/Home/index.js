@@ -3,22 +3,39 @@ import React ,{ useEffect } from 'react';
 import AboutMe from './AboutMe';
 import MySkills from './MySkills';
 
+import { connect } from 'react-redux';
+
 // import SplitText from './SplitText';
 
 import styled from 'styled-components';
 import { Controller, Scene } from 'react-scrollmagic';
 import { Tween, Timeline, SplitLetters } from 'react-gsap';
 
-import './css/style.css';
+import { actionIsDarkmod } from '../../../store';
 
-function Home() {
+import './css/style.css';
+import DarkmodChkBox from '../../DarkmodChkBox';
+
+function Home({state, dispatch}) {
   
   return (
     <div className=''>
+      <DarkmodChkBox />
       <AboutMe />
       <MySkills />
     </div>
   )
 }
 
-export default Home;
+
+function mapStateToProps(state){
+  return {state};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Home);
