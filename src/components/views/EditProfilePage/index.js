@@ -15,6 +15,9 @@ import './style.css';
 
 import UserGuestBook from './UserGuestBook';
 
+import { PfContainer, PfInner} from '../StyledComponents/index';
+import DarkmodChkBox from '../../DarkmodChkBox';
+
 // 내가 tweet 한거, 프로필 수정, where사용해서 내 tweet 가져오기(orderBy) -> 에러링크 들어가면 자동으로 만들어줌 
 // updateProfile 사용 수정-> displayName과 PhotoURL밖에 사용못함 -> 실시간으로 가져오려면 setuserObj(authService.currentUser.displayName or userId or photoUrl) => refreshUser function 을 만들것!!! 
 // 리프레쉬 펑션 -> 프로필수정할때마다 리프레쉬 실행 -> 새로받아온 유저 정보를 리덕스 디스패치
@@ -53,6 +56,10 @@ function EditProfile({state, dispatch}) {
       profileRef.current.classList.add('dragging');
     });
   }, []);
+
+  useEffect(()=>{
+    return
+  }, [state.darkMod]);
 
  
 
@@ -161,8 +168,10 @@ function EditProfile({state, dispatch}) {
   
   return(
     <>
-    <div style={{padding: "0 10px 0"}}>
-      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
+    <PfContainer >
+      <PfInner 
+        className={state.darkMod ? "nes-container with-title is-dark" : "nes-container with-title"}
+      >
           <h3 className="title">{state.userInfo.userName}'s Profile</h3>
           <div style={{ display: 'flex', flexDirection: 'column', margin: '0 auto', textAlgin:"center", padding: '15px 10px 0 15px', alignItems: 'center', justifyContent:"center" }}>
             <div 
@@ -196,15 +205,17 @@ function EditProfile({state, dispatch}) {
               </button>
             </div>
           </div>
-      </div>
-    </div>
+      </PfInner>
+    </PfContainer>
 
-    <div style={{padding: "0 10px 0"}}>
-      <div className="nes-container with-title" style={{position: "relative", width:"100%", maxWidth:"860px", margin: "30px auto 0",padding:'1.5rem', marginTop: "30px", boxSizing:"border-box" }}>
+    <PfContainer style={{marginTop: 30}}>
+      <PfInner 
+        className={state.darkMod ? "nes-container with-title is-dark" : "nes-container with-title"}
+      >
           <h3 className="title">{state.userInfo.userName}'s Guest Book</h3>
           <UserGuestBook />
-      </div>
-    </div>
+      </PfInner>
+    </PfContainer>
     
     <input type="file" id="mediaFile" ref={mediaFileRef} onChange={handleImgChange} />
     </>

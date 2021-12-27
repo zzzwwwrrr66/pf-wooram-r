@@ -6,11 +6,16 @@ import { storageService } from '../../../firebase'
 import Avatar from '@mui/material/Avatar';
 import moment from 'moment';
 import {CircularProgress, usePagination} from '@mui/material/';
+import { connect } from 'react-redux';
 
-function CommentList ({itemObj, isMine}) {
+function CommentList ({itemObj, isMine, state}) {
 
   const [isUpdateComment, setIsUpdateComment] = useState(false);
   const [comment, setComment] = useState(itemObj.comment);
+
+  useEffect(()=>{
+    return;
+  }, [state.darkMod]);
 
   const hadleUpdateToggle = () => {
     setIsUpdateComment(prev=> !prev);
@@ -48,7 +53,7 @@ function CommentList ({itemObj, isMine}) {
 
 
   return (
-    <li style={{ fontSize: '18px' }}>
+    <li style={{ fontSize: '18px', marginBottom: '15px' }}>
       {
         isUpdateComment
         ? <> 
@@ -61,7 +66,10 @@ function CommentList ({itemObj, isMine}) {
           </ul>
         </>
         : <> 
-        <div className="nes-container is-rounded" style={{marginBottom: '15px'}}>
+        <div 
+          // className="nes-container is-rounded"
+          className={state.darkMod ? "nes-container is-rounded is-dark" : "nes-container is-rounded"}
+        >
           <div style={{display:'flex', alignItems: 'center', marginBottom:'5px'}}>
             {
               itemObj.userImg
@@ -104,4 +112,14 @@ function CommentList ({itemObj, isMine}) {
   )
 }
 
-export default CommentList;
+function mapStateToProps( state ){
+  return { state };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (CommentList);

@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Container from '@mui/material/Container';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import Dialog from '@mui/material/Dialog';
 import {CircularProgress, Box} from '@mui/material/';
 import { authService } from '../../../firebase';
+import { connect } from 'react-redux';
 
 function errorMessageFnc(msg) {
   switch (msg) {
@@ -27,7 +28,7 @@ function errorMessageFnc(msg) {
   }
 }
 
-function AuthFormDialog({theme, open, headerDispatch}){
+function AuthFormDialog({theme, open, headerDispatch, state}){
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -43,6 +44,10 @@ function AuthFormDialog({theme, open, headerDispatch}){
   const [loginLoading, setLoginLoading] = useState(false);
   const [googleLoginLoading, setGoogleLoginLoading] = useState(false);
   const [githubLoginLoading, setGithubLoginLoading] = useState(false);
+
+  useEffect(()=>{
+    return;
+  }, [state.darkMod])
 
   const init = () => {
       handleCloseIsOpen();
@@ -165,30 +170,44 @@ function AuthFormDialog({theme, open, headerDispatch}){
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" 
+    style={ state.darkMod ? { backgroundColor: '#212529', color: '#fff' } : { backgroundColor: '#fff', color: '#000' }  }>
     <Box
       noValidate
       autoComplete="off"
-      sx={{mt:2, mb:2 }}
+      sx={{mt:2, mb:2, }}
+      
       >
       <h2>Login</h2>
       <div className="nes-field" style={{marginBottom: '10px'}}>
         <label htmlFor="email_field">Your email</label>
-        <input type="text" id="email_field" className="nes-input" value={values.email} onChange={handleChange('email')} required />
+        <input 
+          type="text" 
+          id="email_field" 
+          className={state.darkMod ? "nes-input is-dark" : "nes-input"}
+          value={values.email} 
+          onChange={handleChange('email')} 
+          required 
+        />
       </div>
       <div className="nes-field">
         <label htmlFor="email_field">Your password</label>
         <input 
           type={values.showPassword ? 'text' : 'password'} 
           id="email_field" 
-          className="nes-input" 
+          className={state.darkMod ? "nes-input is-dark" : "nes-input"}
           value={values.password} 
           onChange={handleChange('password')} 
           required
         />
       </div>
       <label className='checkbox-label'>
-        <input type="checkbox" className="nes-checkbox" checked={values.showPassword} onChange={handleClickShowPassword} />
+        <input 
+        type="checkbox" 
+        className={state.darkMod ? "nes-checkbox is-dark" : "nes-checkbox"}
+        checked={values.showPassword} 
+        onChange={handleClickShowPassword} 
+        />
         <span>password display</span>
       </label>
       {
@@ -255,4 +274,15 @@ function AuthFormDialog({theme, open, headerDispatch}){
   )
 }
 
-export default AuthFormDialog;
+
+function mapStateToProps(state){
+  return {state};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (AuthFormDialog);

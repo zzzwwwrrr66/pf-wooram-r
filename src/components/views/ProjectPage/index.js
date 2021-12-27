@@ -7,43 +7,47 @@ import {actionProjectChangePage} from '../../../store';
 import SortLabel from './SortLabel';
 import ItemList from './ItemList';
 import SortYear from './SortYear'
-import ProjectSummaryDialog from './ProjectSummaryDialog'
+import ProjectSummaryDialog from './ProjectSummaryDialog';
 
-function Project() {
+import { PfContainer, PfInner} from '../StyledComponents/index';
 
-  useEffect(() => {
-    
-  }, [])
+import { connect } from 'react-redux';
+import { actionIsDarkmod } from '../../../store';
+
+import DarkmodChkBox from '../../DarkmodChkBox';
+
+function Project({state, dispatch}) {
+  
+  useEffect(()=>{
+    return;
+  },[state.darkMod]);
 
   return(
     <>
-    <div style={{padding: "0 10px 0"}}>
-    
-      <div 
-        className="nes-container with-title" 
-        style={{
-          position: "relative", 
-          width:"100%", 
-          maxWidth:"860px", 
-          margin: "30px auto 0",
-          padding:'1.5rem 1rem', 
-          marginTop: "30px",
-          marginBottom: '30px', 
-          boxSizing:"border-box" 
-        }}>
+    <DarkmodChkBox />
+    <PfContainer>
+      <PfInner className={state.darkMod ? `with-title nes-container is-dark` : `with-title nes-container`}>
         <h3 className="title">Project</h3>
-
-        
         <SortLabel />
         <SortYear />
         <ItemList />
         <Paging actionChangePageNum={actionProjectChangePage} itemsCount={10} itemsAllCount={ProjectData.length} />
 
         <ProjectSummaryDialog />
-      </div>
-    </div>
+      </PfInner>
+    </PfContainer>
     </>
   )
 }
 
-export default Project;
+function mapStateToProps(state){
+  return {state};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Project);

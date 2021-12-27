@@ -12,6 +12,20 @@ import Header from './components/views/Header';
 
 import { authService } from './firebase';
 
+import {ThemeProvider} from 'styled-components';
+
+const darkTheme = {
+  backgroundColor: '#212529',
+  textColor: '#fff',
+  borderColor: '#fff',
+  
+}
+const lightTheme = {
+  backgroundColor: '#fff',
+  textColor: '#000',
+  borderColor: '#000'
+}
+
 function App({state, dispatch}) {
   const [start, setStart] = useState(true);
   useEffect(()=>{
@@ -45,6 +59,13 @@ function App({state, dispatch}) {
     });
   },[]);
 
+  useEffect(()=>{
+    console.log('is darkmod', state.darkMod);
+    if(state.darkMod) document.body.classList.add('dark');
+    else document.body.classList.remove('dark');
+    
+  },[state.darkMod]);
+
   
   return (
     <>
@@ -56,26 +77,27 @@ function App({state, dispatch}) {
       style={{position: 'absolute', left:'50%', top:'50%', transform:'translate(-50%, -50%)', maxWidth:'1200px', width: '100%', height: '100%', objectFit: 'contain'}} 
       />
     </div>
-    : <>
-    <Header moveLinkTag={Link}/>
-    <div className={`main-wrap`} >
-      <Router>
-        <Switch>
-          <Route path="/" component={ Home } exact={true} />
-          <Route path="/guest-book" component={ GuestBook } exact={true} />
-          <Route path="/contact" component={ Contact } exact={true} />
-          <Route path="/project" component={ Project } exact={true} />
-          <Route exact path="/edit-profile">
-            { 
-              state.userInit 
-              ? state.isLogin ? <EditProfile /> : <Redirect to="/" />
-              : null
-            }
-          </Route>
-        </Switch>
-      </Router>
-    </div>
-    </>
+    : 
+    <ThemeProvider theme={state.darkMod ? darkTheme : lightTheme}>
+      <Header moveLinkTag={Link}/>
+      <div className={`main-wrap`} >
+        <Router>
+          <Switch>
+            <Route path="/" component={ Home } exact={true} />
+            <Route path="/guest-book" component={ GuestBook } exact={true} />
+            <Route path="/contact" component={ Contact } exact={true} />
+            <Route path="/project" component={ Project } exact={true} />
+            <Route exact path="/edit-profile">
+              { 
+                state.userInit 
+                ? state.isLogin ? <EditProfile /> : <Redirect to="/" />
+                : null
+              }
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeProvider>
     }
       
     </>

@@ -25,9 +25,16 @@ function ItemDetailDialog({closeDialog, state, }) {
     return;
   }, [state.projectStatus.detailId]);
 
+  useEffect(()=> {
+    return;
+  }, [state.darkMod]);
+
   return (
     <Dialog onClose={closeDialog} open={state.projectStatus.detailIsOpen} maxWidth='md' sx={{margin:'10px'}} style={{margin:'10px'}}>
-      <div className="nes-container with-title is-centered " style={{positon: 'relative' ,maxWidth: '900px', width: '100%'}}> 
+      <div 
+        className={state.darkMod ? "nes-container with-title is-centered is-dark" : "nes-container with-title is-centered"}
+        style={{positon: 'relative' ,maxWidth: '900px', width: '100%'}}
+      > 
         {
           currentItem&&
           <>

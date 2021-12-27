@@ -5,7 +5,9 @@ import _ from 'lodash';
 import {actionProjectDetailOpen, actionProjectDetailClose, actionProjectSetCurrentData } from '../../../store';
 import ItemDetailDialog from './ItemDetailDialog';
 
-import './css/ItemList.css'
+import './css/ItemList.css';
+
+import { PfProjectListWrap } from '../StyledComponents'
 
 
 const ItemList = ({state, dispatch, openDialog}) => {
@@ -13,6 +15,11 @@ const ItemList = ({state, dispatch, openDialog}) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(state.projectStatus.currentPage);
   const [currentCount, setCurrentCount] = useState(0);
+
+  // darkmod
+  useEffect(()=>{
+    return;
+  },[state.darkMod]);
   
   // currentPage
   useEffect(() => {
@@ -85,7 +92,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
         currentItems.length > 0  
         ? currentItems.map((v, i) =>
           (
-            <li key={i} className='list-wrap' >
+            <PfProjectListWrap key={i}  >
               <div style={{marginRight: '10px'}}>
                 <p>{v.add_year}年作 【{v.kinds}】</p>
                 <p style={{fontWeight: 'bold'}}>{v.title}</p>
@@ -109,7 +116,7 @@ const ItemList = ({state, dispatch, openDialog}) => {
                 </div>
               }
               
-            </li>
+            </PfProjectListWrap>
           )
           )
         :<p>該当するアイテムがありません。</p>

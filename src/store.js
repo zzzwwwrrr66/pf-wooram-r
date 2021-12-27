@@ -9,6 +9,7 @@ const mainStore = createSlice({
     isLogin: false,
     userInfo: null,
     userInit: false,
+    darkMod: false,
     projectStatus: {
       currentLabel: [],
       currentYear: 'all',
@@ -69,7 +70,9 @@ const mainStore = createSlice({
     actionGuestBookChangePage: (state, action) => {
       state.guestBookStatus.currentPage = action.payload;
     },
-  
+    actionIsDarkmod: (state, action) => {
+      state.darkMod = !state.darkMod;
+    }
   }
 });
 const projectStore = createSlice({
@@ -96,6 +99,7 @@ export const {
   actionProjectDetailClose,
   actionProjectSetCurrentData,
   actionGuestBookChangePage,
+  actionIsDarkmod
 } = mainStore.actions;
 
 export default store;

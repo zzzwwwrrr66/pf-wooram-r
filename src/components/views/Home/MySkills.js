@@ -1,9 +1,12 @@
 import {useEffect,useState} from 'react';
+import { connect } from 'react-redux';
 
 import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 import MySkillsCircle from "./MySkillsCircle";
 import { easeQuadInOut } from "d3-ease";
+
+import { PfContainer, PfInner} from '../StyledComponents/index';
 
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -42,7 +45,7 @@ function handleColor(skillName) {
   }
 }
 
-function MySkills () {
+function MySkills ({state}) {
   const [japanese, setJapanese] = useState(0)
   const [mySkills, setMySkills] = useState({
     Japanese: 90,
@@ -62,29 +65,16 @@ function MySkills () {
   })
 
   useEffect(()=>{
-    console.log(Object.keys(mySkills) );
-    return () => {
-
-    }
-  },[]);
+    return
+  }, [state.darkMod]);
 
 
   return (
-    <div style={{padding: "0 10px 0"}}>
-      <div 
-        className="nes-container with-title" 
-        style={{
-          position: "relative", 
-          width:"100%", 
-          maxWidth:"860px", 
-          margin: "30px auto 0",
-          padding:'1.5rem 1rem', 
-          marginTop: "30px",
-          marginBottom: '30px', 
-          boxSizing:"border-box" 
-        }}>
+    <PfContainer style={{ margin: "30px auto" }}>
+      <PfInner 
+        className={state.darkMod ? `with-title nes-container is-dark` : `with-title nes-container`}
+        >
         <h3 className="title">My Skills</h3>
-        
         <div style={{display: 'flex', flexWrap:'wrap',}}>
         {
         Object.keys(mySkills).map(skill=>(
@@ -104,7 +94,7 @@ function MySkills () {
                     styles={buildStyles({
                       pathTransition: "none",
                       pathColor: handleColor(skill),
-                      textColor: '#000',
+                      textColor: state.darkMod ? '#fff' : '#000',
                       textSize: "13px"
                     })}
                   />
@@ -115,9 +105,14 @@ function MySkills () {
         ))
         }
         </div>
-      </div>
-    </div>
+      </PfInner>
+    </PfContainer>
   )
 }
 
-export default MySkills;
+function mapStateToProps(state){
+  return {state};
+}
+
+
+export default connect(mapStateToProps) (MySkills);

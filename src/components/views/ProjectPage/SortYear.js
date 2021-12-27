@@ -17,14 +17,16 @@ const SortYear = ({state, dispatch}) => {
     dispatch(actionProjectChangeYear(e.target.value));
   }
 
-  
+  useEffect(()=>{
+    return;
+  },[state.darkMod]);
 
   return (
     <>
     <h4 style={{marginTop:'10px'}}>
       sort year
     </h4>
-    <div className="nes-select select-wrap">
+    <div className={state.darkMod ? `nes-select select-wrap is-dark` : `nes-select select-wrap`}>
       <select id="default_select" onChange={changeSelect} value={currentSelect}>
         <option value="all">All</option>
         <option value="2020">2020</option>

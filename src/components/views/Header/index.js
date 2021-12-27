@@ -67,7 +67,6 @@ function Header({state}) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Nav />
-          
           {
             state.userInit ? 
             state.isLogin ?

@@ -1,30 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import SendEmailForm from './SendEmailForm';
 
-function Contact() {
- 
+import { PfContainer, PfInner} from '../StyledComponents/index';
+import DarkmodChkBox from '../../DarkmodChkBox';
+
+function Contact({state}) {
+
+  useEffect(() => {
+    return;
+  }, [state.darkMod]);
+
   return(
-    <div style={{padding: "0 10px 0"}}>
-      <div 
-        className="nes-container with-title" 
-        style={{
-          position: "relative", 
-          width:"100%", 
-          maxWidth:"860px", 
-          margin: "30px auto 0",
-          padding:'1.5rem 1rem', 
-          marginTop: "30px",
-          marginBottom: '30px', 
-          boxSizing:"border-box" 
-        }}>
+    <>
+    <DarkmodChkBox />
+    <PfContainer >
+      <PfInner 
+        className={state.darkMod ? "nes-container with-title is-dark" : "nes-container with-title"}
+      > 
         <h3 className="title">Contact Me</h3>
         <SendEmailForm />
 
-      </div>
-    </div>
-    
+      </PfInner>
+    </PfContainer>
+    </>
   )
 }
 
-export default Contact;
+function mapStateToProps( state ){
+  return { state };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Contact);

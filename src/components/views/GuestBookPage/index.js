@@ -19,6 +19,9 @@ import {actionGuestBookChangePage} from '../../../store';
 import CommentList from './CommentList';
 import Paging from '../../Paging';
 
+import { PfContainer, PfInner} from '../StyledComponents/index';
+import DarkmodChkBox from '../../DarkmodChkBox';
+
 
 function GuestBook({state}) {
   const [listLoading, setListLoading] = useState(false);
@@ -53,6 +56,10 @@ function GuestBook({state}) {
     setCurrentCommentList(pagingItems(commentList));
   }, [state.guestBookStatus.currentPage]);
 
+  useEffect(()=>{
+    return;
+  }, [state.darkMod]);
+
   const pagingItems = (itemArr) => {
     const result = [];
     let startNum = ((state.guestBookStatus.currentPage - 1) * 5 + 1) - 1;
@@ -65,18 +72,10 @@ function GuestBook({state}) {
 
   return(
     <>
-    <div style={{padding: "0 10px 0", overflowX:'hidden'}}>
-      <div 
-        className="nes-container with-title" 
-        style={{
-          position: "relative", 
-          width:"100%", 
-          maxWidth:"860px", 
-          margin: "0 auto 0",
-          padding:'1.5rem 1rem', 
-          marginBottom: '30px', 
-          boxSizing:"border-box" 
-        }}
+    <DarkmodChkBox />
+    <PfContainer>
+      <PfInner 
+        className={state.darkMod ? `with-title nes-container is-dark` : `with-title nes-container`}
       >
       <GuestBookForm  />
         <section className="message-list">
@@ -99,9 +98,8 @@ function GuestBook({state}) {
       </section>
 
       <Paging actionChangePageNum={actionGuestBookChangePage && actionGuestBookChangePage} itemsCount={5} itemsAllCount={listCount && listCount} />
-    </div>
-    </div>
-    
+    </PfInner>
+    </PfContainer>
     </>
   )
 }

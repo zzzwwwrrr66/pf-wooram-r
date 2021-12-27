@@ -20,12 +20,17 @@ function GuestBookForm({state}) {
   const [loading, setLoading] = useState(false);
   const inputFileRef = useRef(null);
 
+  
+
   useEffect(() => {
     if(state.userInit) {
       setIsLogined(state.isLogin);
     }
     return;
   }, [isLogined]);
+
+  useEffect(()=>{
+  }, [state.darkMod]);
 
   const hadleVal = (e) => {
     setVal(e.target.value);
@@ -101,13 +106,21 @@ function GuestBookForm({state}) {
     setVal('');
   }
 
+
+
   return (
     <>
         <h3 className="title">Guest Book</h3>
 
         <div>
           <label htmlFor="textarea_field">Your Guestbook</label>
-          <textarea id="textarea_field" className="nes-textarea" onChange={hadleVal} value={val} required></textarea>
+          <textarea 
+            id="textarea_field" 
+            className={state.darkMod ? "nes-textarea is-dark"  : "nes-textarea" }
+            onChange={hadleVal} 
+            value={val} 
+            required
+          ></textarea>
         </div>
 
         {
@@ -116,13 +129,21 @@ function GuestBookForm({state}) {
             <div style={{textAlign: 'center'}}>
               <img src={fileInfo.url} style={{maxWidth:`500px`,width:'100%', objectFit:'cover'}} alt="" />
             </div>
-            {/* <p><button type="button" onClick={handleClearImg} style={{padding:'5px'}}>clear img</button></p> */}
-            <button type="button" className="nes-btn is-small" onClick={handleClearImg} style={{padding:'5px'}}>Clear Img</button>
+            <button 
+              className={state.darkMode ? "nes-btn is-small is-dark" : "nes-btn is-small"}
+              type="button" 
+              onClick={handleClearImg} 
+              style={{padding:'5px'}}
+            >
+              Clear Img
+            </button>
           </div>
           }
 
           <div style={{paddingTop:'10px'}}>
-            <label className="nes-btn is-small">
+            <label 
+              className={ state.darkMode ? "nes-btn is-small is-dark" : "nes-btn is-small"}
+            >
               <span>Select Your Image</span>
               <input type="file" accept="image/*" onChange={handleFile} ref={inputFileRef}/>
             </label>

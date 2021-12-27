@@ -1,7 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import{ init } from 'emailjs-com';
 import CircularProgress from '@mui/material/CircularProgress';
+import { connect } from 'react-redux';
 
 init("user_ookQUxWA7b2z7WZNGZSV5");
 
@@ -35,7 +36,7 @@ function checkMessage(val) {
   else return false
 }
 
-function SendEmailForm() {
+function SendEmailForm({state}) {
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -44,10 +45,11 @@ function SendEmailForm() {
   const emailRef = useRef(null);
   const nameRef = useRef(null);
   const messageRef = useRef(null);
-
-  
-
   const formRef = useRef(null);
+
+  useEffect(() => {
+    
+  }, [state.darkMod]);
 
   const init = () => {
     setEmail('');
@@ -106,19 +108,46 @@ function SendEmailForm() {
     <form ref={formRef} onSubmit={sendEmailSubmit}>
       <div className="nes-field" style={{marginBottom: '15px'}}>
         <label htmlFor="email_field">Your email</label>
-        <input type="text" name='user_email' value={email} id="email_field" className="nes-input" onChange={emailChange} ref={emailRef} />
+        <input 
+          type="text" 
+          name='user_email' 
+          value={email} 
+          id="email_field" 
+          className={state.darkMod ? "nes-input is-dark" : "nes-input" } 
+          onChange={emailChange} 
+          ref={emailRef} 
+        />
       </div>
       <div className="nes-field" style={{marginBottom: '15px'}}>
         <label htmlFor="name_field">Your name</label>
-        <input type="text" name='user_name' value={name} id="name_field" className="nes-input" onChange={nameChange} ref={nameRef}  />
+        <input 
+          type="text" 
+          name='user_name' 
+          value={name} 
+          id="name_field" 
+          className={state.darkMod ? "nes-input is-dark" : "nes-input" } 
+          onChange={nameChange} 
+          ref={nameRef}  
+        />
       </div>
       <div className="nes-field" style={{marginBottom: '30px'}}>
         <label htmlFor="textarea_field">Your message</label>
-        <textarea id="textarea_field" className="nes-textarea" value={message} name='user_message' onChange={infoChange} ref={messageRef}></textarea>
+        <textarea 
+          id="textarea_field" 
+          className={state.darkMod ? "nes-textarea is-dark" : "nes-textarea" } 
+          value={message} 
+          name='user_message' 
+          onChange={infoChange} 
+          ref={messageRef}
+        ></textarea>
       </div>
 
       <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '15px'}}>
-        <button type="submit" className="nes-btn is-main" style={{width:'184px'}}>
+        <button 
+          type="submit" 
+          className={state.darkMod ? 'nes-btn is-main is-dark' : 'nes-btn is-main'}
+          style={{width:'184px'}}
+        >
         {
           sendLoading
           ? <CircularProgress size={20} style={{color:'#fff'}} />
@@ -131,4 +160,14 @@ function SendEmailForm() {
   )
 }
 
-export default SendEmailForm;
+function mapStateToProps( state ){
+  return { state };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (SendEmailForm);

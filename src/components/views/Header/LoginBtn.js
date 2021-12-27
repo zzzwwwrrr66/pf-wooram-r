@@ -1,4 +1,4 @@
-import { useState, memo }  from 'react';
+import { useState, memo, useEffect }  from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -21,8 +21,11 @@ const LoginBtn = ({state}) => {
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(null);
   const [init, setInit] = useState(false);
+
+  useEffect(()=>{
+    return;
+  }, [state.darkMod]);
   
- 
   const handleOpenUserMenu = (event) => {
     setIsUserMenuOpen(event.currentTarget);
   };
@@ -48,7 +51,7 @@ const LoginBtn = ({state}) => {
           }
         </IconButton>
         <Menu
-          sx={{ mt: '45px',  p: 2 }}
+          sx={{ mt: '45px', p: 2, }}
           id="menu-appbar"
           anchorEl={isUserMenuOpen}
           anchorOrigin={{
@@ -62,7 +65,7 @@ const LoginBtn = ({state}) => {
           }}
           open={Boolean(isUserMenuOpen)}
           onClose={handleCloseUserMenu}
-          style={{padding: '10px'}}
+          style={{padding: '10px',}}
         >
           <li style={{textAlign: 'center',margin:'0 0 10px' }}>
             <Link to={`/edit-profile`} onClick={handleCloseUserMenu} 
