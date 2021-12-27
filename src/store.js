@@ -17,6 +17,7 @@ const mainStore = createSlice({
       data : ProjectData,
       dataCount : ProjectData.length,
       currentData: [],
+      currentCount: ProjectData.length,
       detailIsOpen: false,
       detailId: null,
     },
@@ -67,6 +68,9 @@ const mainStore = createSlice({
     actionProjectSetCurrentData: (state, action) => {
       state.projectStatus.currentData = action.payload;
     },
+    actionProjectSetCurrentCount: (state, action) => {
+      state.projectStatus.currentCount = action.payload;
+    },
     actionGuestBookChangePage: (state, action) => {
       state.guestBookStatus.currentPage = action.payload;
     },
@@ -98,6 +102,7 @@ export const {
   actionProjectDetailOpen,
   actionProjectDetailClose,
   actionProjectSetCurrentData,
+  actionProjectSetCurrentCount,
   actionGuestBookChangePage,
   actionIsDarkmod
 } = mainStore.actions;

@@ -6,6 +6,8 @@ import styled from "styled-components";
 
 import { PfContainer, PfInner} from '../StyledComponents/index';
 
+import AniProfileImg from './AniProfileImg';
+
 function AboutMe ({state}) {
 
   useEffect(()=>{
@@ -46,7 +48,8 @@ function AboutMe ({state}) {
               </div>
           </div>
           <div className='profile-img-wrap'>
-            <img alt='me' src={require('./me.png').default} style={{width: '200px'}} />
+            <AniProfileImg>
+            </AniProfileImg>
           </div>
         </div>
       </PfInner>
