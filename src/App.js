@@ -9,6 +9,7 @@ import GuestBook from './components/views/GuestBookPage/index';
 import Contact from './components/views/ContactPage/index';
 import Project from './components/views/ProjectPage/index';
 import Header from './components/views/Header';
+import AniLogoImg from './components/AniLogoImg';
 
 import { authService } from './firebase';
 
@@ -79,8 +80,14 @@ function App({state, dispatch}) {
     </div>
     : 
     <ThemeProvider theme={state.darkMod ? darkTheme : lightTheme}>
+      
       <Header moveLinkTag={Link}/>
       <div className={`main-wrap`} >
+
+        <div style={{display:'flex', justifyContent: 'center', marginBottom:'15px'}}>
+          <AniLogoImg></AniLogoImg>
+        </div>
+          
         <Router>
           <Switch>
             <Route path="/" component={ Home } exact={true} />

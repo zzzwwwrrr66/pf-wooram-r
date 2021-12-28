@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { PfContainer, PfInner} from '../StyledComponents/index';
 
-import AniProfileImg from './AniProfileImg';
+
 
 function AboutMe ({state}) {
 
@@ -48,8 +48,7 @@ function AboutMe ({state}) {
               </div>
           </div>
           <div className='profile-img-wrap'>
-            <AniProfileImg>
-            </AniProfileImg>
+            <img alt='me' src={require('./me.png').default} style={{width: '200px'}} />
           </div>
         </div>
       </PfInner>
