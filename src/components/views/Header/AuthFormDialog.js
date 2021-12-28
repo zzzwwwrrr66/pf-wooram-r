@@ -148,7 +148,6 @@ function AuthFormDialog({theme, open, headerDispatch, state}){
     auth.languageCode = 'ja';
     authService.signInWithPopup(auth, provider)
     .then((res) => {
-      console.log(res);
       setGoogleLoginLoading(false);
       setGithubLoginLoading(false);
       init();

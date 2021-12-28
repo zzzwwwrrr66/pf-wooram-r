@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { HashRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actionIsLogin, actionUserInfo, actionUserInit } from './store'
+import { actionIsLogin, actionUserInfo, actionUserInit,actionIsDarkmod } from './store'
 import './default.css'
 import Home from './components/views/Home/index'
 import EditProfile from './components/views/EditProfilePage';
@@ -32,7 +32,6 @@ function App({state, dispatch}) {
   useEffect(()=>{
     setTimeout(()=>{
       setStart(false);
-      console.log('start');
     }, 1200)
   },[]);
 
@@ -61,13 +60,18 @@ function App({state, dispatch}) {
   },[]);
 
   useEffect(()=>{
-    console.log('is darkmod', state.darkMod);
-    if(state.darkMod) document.body.classList.add('dark');
-    else document.body.classList.remove('dark');
-    
-  },[state.darkMod]);
+    if(start) {
+      if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        dispatch(actionIsDarkmod(true));
+        document.body.classList.add('dark');
+      }
+      else {
+        dispatch(actionIsDarkmod(false));
+        document.body.classList.remove('dark');
+      }
+    }
+  });
 
-  
   return (
     <>
     {

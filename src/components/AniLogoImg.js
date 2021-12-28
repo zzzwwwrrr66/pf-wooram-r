@@ -1,5 +1,5 @@
 import TweenOne from 'rc-tween-one';
-import React from 'react';
+import React, { } from 'react';
 import logoImg from './images/wooram_logo.png';
 import styled from 'styled-components';
 
@@ -15,7 +15,8 @@ const p0 = 'M0,100 L25,100 C34,20 40,0 100,0';
 const p1 = 'M0,100 C5,120 25,130 25,100 C30,60 40,75 58,90 C69,98.5 83,99.5 100,100';
 const ease0 = TweenOne.easing.path(p0);
 const ease1 = TweenOne.easing.path(p1);
-class AniProfileImg extends React.Component {
+
+class AniLogoImg extends React.Component {
   constructor(props) {
     super(props);
     this.animation = [
@@ -60,4 +61,4 @@ class AniProfileImg extends React.Component {
   }
 }
 
-export default AniProfileImg;
+export default AniLogoImg;

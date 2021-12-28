@@ -11,8 +11,15 @@ function DarkmodChkBox({state, dispatch}) {
     return;
   },[state.darkMod]);
 
-  const darkmodChange = () => {
-    dispatch(actionIsDarkmod());
+  const darkmodChange = (e) => {
+    if(e.target.checked) {
+      dispatch(actionIsDarkmod(true));
+      document.body.classList.add('dark');
+    } else {
+      dispatch(actionIsDarkmod(false));
+      document.body.classList.remove('dark');
+    }
+    
   };
 
   return(

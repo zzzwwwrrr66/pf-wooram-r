@@ -11,7 +11,6 @@ function ItemDetailDialog({closeDialog, state, }) {
   const [currentItem, setCurrentItem] = useState(null);
 
   useEffect(() => {
-    console.log(state.projectStatus.detailId);
     if(state.projectStatus.detailId) {
       setCurrentItem(
         state.projectStatus.data.filter(v=> {

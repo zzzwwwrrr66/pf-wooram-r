@@ -75,8 +75,8 @@ const mainStore = createSlice({
       state.guestBookStatus.currentPage = action.payload;
     },
     actionIsDarkmod: (state, action) => {
-      state.darkMod = !state.darkMod;
-    }
+      state.darkMod = action.payload;
+    },
   }
 });
 const projectStore = createSlice({
