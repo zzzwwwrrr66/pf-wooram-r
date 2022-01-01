@@ -30,6 +30,7 @@ function AboutMe ({state}) {
               </ul>
               <p>Education: 韓国外国語通信大学（４年） 日本語学部</p>
               <p>comment: コツコツ、繰り返すより新しい冒険</p>
+              <p>LINE ID: pqpq777</p>
               <p style={{marginBottom: '0'}}>attitude at work: </p>
               <ul className="nes-list is-disc" style={{margin:'0 1rem 10px'}}>
                 <li>とりあえずやってみるのが好き</li>
