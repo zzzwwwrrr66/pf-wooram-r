@@ -17,7 +17,7 @@ function AboutMe ({state}) {
   return (
     <PfContainer>
       <PfInner className={state.darkMod ? `with-title nes-container is-dark` : `with-title nes-container`}>
-        <h3 className="title">about me</h3>
+        <h3 className="title">About me</h3>
         <div className='about-me-wrap' >
           <div>
               <p>name: cho wooram チョ ウラム</p>
