@@ -119,6 +119,9 @@ body.dark {
 body.dark .MuiMenu-list {
 	background-color: #000;
 }
+body.dark .nes-list.is-disc li::before {
+	color: white;
+}
 /* nes.css dark S */
 .nes-container {
 	margin: 0 auto !important;

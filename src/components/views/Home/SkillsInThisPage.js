@@ -45,7 +45,7 @@ function SkillsInThisPage({state}) {
         }
         </SkillsWrap>
         <div className="lists" style={{margin:'10px 20px 0'}}>
-        <ul className="nes-list is-disc">
+        <ul className={'nes-list is-disc'}>
           <li>styled components</li>
           <li>Material-UI</li>
           <li>NES.css</li>
