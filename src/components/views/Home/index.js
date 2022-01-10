@@ -2,6 +2,7 @@ import React ,{ useEffect } from 'react';
 
 import AboutMe from './AboutMe';
 import MySkills from './MySkills';
+import SkillsInThisPage from './SkillsInThisPage';
 
 import { connect } from 'react-redux';
 
@@ -23,6 +24,7 @@ function Home({state, dispatch}) {
       <DarkmodChkBox />
       <AboutMe />
       <MySkills />
+      <SkillsInThisPage></SkillsInThisPage>
     </div>
   )
 }
