@@ -57,7 +57,7 @@ function MySkills ({state}) {
     Redux: 70,
     Vue2: 65,
     Vuex: 70,
-    Typescript: 25,
+    Typescript: 50,
     Firebase: 60,
     Git: 50,
     Webpack: 50,
